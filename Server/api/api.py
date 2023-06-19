@@ -116,12 +116,10 @@ def get_history():
     stocks = g.get_stocks()
     for stock in stocks: 
         history.append(stock.getPriceHistory())
-    print(history)
     return history
 
 def generate_plot(price_history):
     time = np.arange(len(price_history))
-    print(time)
     plt.plot(time, price_history)
     plt.title('Price History')
     plt.xlabel('Time')
