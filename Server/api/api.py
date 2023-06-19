@@ -12,7 +12,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 
 # initialize marketplace
-g = GammaTrade(1)
+g = GammaTrade(100)
 
 # initialize API
 api = FastAPI()
@@ -110,21 +110,25 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 import tempfile
 
-history = []
+
 def get_history():
+    history = []
     stocks = g.get_stocks()
     for stock in stocks: 
-        history.append(np.array(stock.getPriceHistory()))
+        history.append(stock.getPriceHistory())
     print(history)
+    return history
 
 def generate_plot(price_history):
-    time = range(len(price_history))
+    time = np.arange(len(price_history))
+    print(time)
     plt.plot(time, price_history)
     plt.title('Price History')
     plt.xlabel('Time')
     plt.ylabel('Value')
     plt.grid(True)
 
+    print(time)
     # Save the plot image to a temporary file
     with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
         plt.savefig(temp_file, format='png')
@@ -135,10 +139,10 @@ def generate_plot(price_history):
 
 @api.get("/foo")
 async def foo():
-    get_history()
+    history = get_history()
     plots = []
     for price_history in history:
         plot_image = generate_plot(price_history)
         plots.append(plot_image)
 
-    return [FileResponse(plot, media_type='image/png') for plot in plots][0]
+    return [FileResponse(plot, media_type='image/png') for plot in plots][-1]
