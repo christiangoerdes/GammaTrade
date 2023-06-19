@@ -16,10 +16,10 @@ set(CMAKE_CXX_STANDARD 17)
 # add_link_options(-fsanitize=address)
 
 # Füge selbsgeschriebene Includes hinzu
-include_directories(src)
+include_directories(include)
 
 # use if not like docker
-set(pybind11_DIR "/home/chrisi/.local/lib/python3.10/site-packages/pybind11/share/cmake/pybind11")
+# set(pybind11_DIR "/home/sergej/.local/lib/python3.10/site-packages/pybind11/share/cmake/pybind11")
 
 find_package(pybind11 REQUIRED)
 
@@ -28,6 +28,9 @@ find_package(pybind11 REQUIRED)
 
 pybind11_add_module(gammaTrade
         api/pybind.cpp
+        src/gammaTrade.cpp
+        src/account.cpp
+        src/stock.cpp
         )
 
 ## Installiere die Bibliothek

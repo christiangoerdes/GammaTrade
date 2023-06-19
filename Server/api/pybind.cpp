@@ -1,4 +1,4 @@
-#include "../src/gammaTrade.cpp"
+#include "gammaTrade.hpp"
 #include <pybind11/pybind11.h>
 #include <pybind11/stl.h>
 
