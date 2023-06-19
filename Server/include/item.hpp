@@ -7,11 +7,8 @@
 class Item {
     public: 
         // Constructor 
-        Item(std::string name, Account owner); 
-        Item(std::string name, Account owner, double price);
+        Item(std::string name, double price);
         
         // Attributes 
         std::string name; 
-        Account owner; 
-        double price; 
-}; 
+};

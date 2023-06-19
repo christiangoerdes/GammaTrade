@@ -1,7 +1,7 @@
 #pragma once 
 #include "item.hpp"
 #include <iostream>
-#include <vector>
+#include <unordered_map>
 
 // Account class 
 class Account {
@@ -13,5 +13,5 @@ class Account {
         std::string name; 
         std::string password; 
         double balance; 
-        std::vector<Item> goods; 
+        std::unordered_map<Item, int> stocks; 
 }; 
