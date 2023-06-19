@@ -1,6 +1,5 @@
 #include "../include/gammaTrade.hpp"
 #include "../include/account.hpp"
-#include "../include/item.hpp"
 
 // Implementation for the GammaTrade class
 
