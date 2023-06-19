@@ -1,17 +1,17 @@
 #pragma once 
 #include "item.hpp"
 #include <iostream>
-#include <unordered_map>
+#include <map>
 
 // Account class 
 class Account {
     public: 
         // Constructor 
-        Account::Account(std::string name, std::string password) {
+        Account(std::string name, std::string password) {
             _name = name;
             _password = password;
             _balance = 0;
-}
+        }
         
         // Getter 
         std::string get_name() {
@@ -29,5 +29,5 @@ class Account {
         std::string _name; 
         std::string _password; 
         double _balance; 
-        std::unordered_map<Item, int> _stocks; 
+        std::map<Item, int> _stocks; 
 }; 
