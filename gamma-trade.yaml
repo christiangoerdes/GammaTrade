@@ -1,0 +1,96 @@
+openapi: 3.0.3
+info: 
+  title: Gamma Trade
+  description: lorem ipsum 
+  version: 1.0.0
+tags:
+  - name: Account
+  - name: Market
+paths:
+  /account:
+    post:
+      tags: 
+        - Account
+      summary: create an account
+      requestBody: 
+        $ref: '#/components/requestBodies/NewAccount'
+      responses:
+        '200': 
+          description: OK
+  /login:
+    get:
+      tags:
+        - Account
+      summary: log into an account
+      parameters:
+        - $ref: '#/components/parameters/Name'
+        - $ref: '#/components/parameters/Password'
+      responses:
+        '200': 
+          description: OK
+        '403':
+          description: FORBIDDEN
+        '404': 
+          description: NOT FOUND
+
+
+components:
+
+  parameters:
+    Name:
+      name: name
+      in: path
+      required: true
+      schema: 
+        type: string
+
+    Password:
+      name: password
+      in: path
+      required: true
+      schema: 
+        type: string
+
+
+  requestBodies:
+    NewAccount:
+      content:
+        application/json:
+          schema: 
+            $ref: '#/components/schemas/NewAccount'
+
+  schemas:
+    Market:
+      type: object
+      properties:
+        goods:
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
+    NewAccount:
+      type: object
+      properties:
+        name: 
+          type: string
+        password: 
+          type: string
+    Account:
+      type: object
+      properties:
+        name: 
+          type: string
+        password: 
+          type: string
+        balance:
+          type: integer
+        goods:
+          type: array
+          items:
+            $ref: "#/components/schemas/Item"
+    Item: 
+      type: object
+      properties:
+        name: 
+          type: string
+        price:
+          type: number
