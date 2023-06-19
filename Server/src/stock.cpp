@@ -6,7 +6,7 @@ Stock::Stock(const std::string name, const double start, const double tendenz, c
     : _name(name), _start(start), _tendenz(tendenz), _sd(sd), _timespan(timespan), _price_history(std::list<double>({start})) {
 }
 
-void Stock::update(const double dt) {
+void Stock::update(const int dt) {
 
     std::random_device rd;
     std::mt19937 generator(rd()); // Mersenne Twister random number generator

@@ -1,7 +1,7 @@
 #pragma once 
 
 #include <iostream>
-#include <map>
+#include <unordered_map>
 #include <string>
 #include <stock.hpp>
 
@@ -28,5 +28,5 @@ class Account {
         std::string _name; 
         std::string _password; 
         double _balance; 
-        std::map<std::string, int> _stocks; 
+        std::unordered_map<std::string, int> _stocks; 
 }; 

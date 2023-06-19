@@ -3,12 +3,17 @@
 #include "account.hpp"
 #include <iostream>
 #include <vector>
+#include <thread>
+#include <chrono>
+#include <future>
 
 // GammaTrade class 
 class GammaTrade {
     public:
         // Constructor 
-        GammaTrade();
+        GammaTrade(const int timespan);
+
+        void run_market(const int dt);
 
         bool sign_up(std::string name, std::string password);
 
@@ -24,5 +29,6 @@ class GammaTrade {
 
     private: 
         std::vector<Account> accounts; 
-        std::map<std::string, Stock> stocks; 
+        std::unordered_map<std::string, Stock> stocks;
+        const int _timespan;
 };

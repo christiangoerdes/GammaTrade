@@ -3,8 +3,40 @@
 
 // Implementation for the GammaTrade class
 
-GammaTrade::GammaTrade() {
+GammaTrade::GammaTrade(const int timespan) : _timespan(timespan) {
 
+    // initialize all stocks
+    stocks = { 
+        {"DogeCoin", Stock("DogeCoin", 1000, 50, 10, _timespan)},
+        {"TechFlair Corp", Stock("TechFlair Corp", 200.00, 5.00, 15.00, _timespan)},
+        {"GreenWorld Energy", Stock("GreenWorld Energy", 75.00, 2.00, 10.00, _timespan)},
+        {"BlueChip Trust", Stock("BlueChip Trust", 500.00, 1.00, 5.00, _timespan)},
+        {"Quantum Computing Inc", Stock("Quantum Computing Inc", 50.00, 10.00, 30.00, _timespan)},
+        {"SafeHaven Insurance", Stock("SafeHaven Insurance", 300.00, 3.00, 8.00, _timespan)},
+        {"RedPanda Retail", Stock("RedPanda Retail", 100.00, 5.00, 20.00, _timespan)},
+        {"HyperAuto Cars", Stock("HyperAuto Cars", 200.00, 2.00, 25.00, _timespan)},
+        {"GoldenHorizon Investments", Stock("GoldenHorizon Investments", 450.00, 4.00, 12.00, _timespan)},
+        {"MediTech Health", Stock("MediTech Health", 150.00, 7.00, 18.00, _timespan)},
+        {"CrystalClear Water", Stock("CrystalClear Water", 80.00, 2.00, 15.00, _timespan)},
+        {"Falcon Aerospace", Stock("Falcon Aerospace", 120.00, 8.00, 30.00, _timespan)},
+        {"NanoInnovations Ltd", Stock("NanoInnovations Ltd", 70.00, 6.00, 20.00, _timespan)},
+        {"ArcticMining Co", Stock("ArcticMining Co", 250.00, 3.00, 20.00, _timespan)},
+        {"Evergreen Real Estate", Stock("Evergreen Real Estate", 350.00, 4.00, 10.00, _timespan)},
+        {"BrightFutures Education", Stock("BrightFutures Education", 100.00, 5.00, 15.00, _timespan)},
+    };
+
+    // start market loop
+    std::async(std::launch::async, &GammaTrade::run_market, this, 1000);
+
+}
+
+void GammaTrade::run_market(const int dt) {
+    while (true) {
+        std::this_thread::sleep_for(std::chrono::milliseconds(dt));
+        for (auto& [key, stock] : stocks) {
+            stock.update(dt);
+        }
+    }
 }
 
 // Create a new account

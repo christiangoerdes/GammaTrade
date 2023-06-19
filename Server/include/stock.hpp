@@ -7,7 +7,7 @@ class Stock {
     public:
         Stock(const std::string name, const double start, const double tendenz, const double sd, const double timespan);
 
-        void update(const double dt);
+        void update(const int dt);
 
         const std::list<double>& getPriceHistory();
 
