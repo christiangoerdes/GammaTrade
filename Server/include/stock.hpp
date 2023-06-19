@@ -1,7 +1,7 @@
 #pragma once 
 
 #include <iostream>
-#include <queue>
+#include <list>
 
 class Stock {
     public:
@@ -9,7 +9,7 @@ class Stock {
 
         void update(double dt);
 
-        std::queue<double>& getPriceHistory() {
+        std::list<double>& getPriceHistory() {
             return price_history;
         }
 
@@ -18,6 +18,6 @@ class Stock {
         const double tendenz;
         const double sd;
         const double timespan;
-        std::queue<double> price_history;
+        std::list<double> price_history;
 
 };
