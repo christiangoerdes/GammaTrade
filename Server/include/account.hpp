@@ -14,11 +14,18 @@ class Account {
         }
         
         // Update the account balance
-        bool update_balance(int amount) {
+        bool add_to_balance(int amount) {
             if(amount < 0) {
                 return false;
             }
             _balance += amount;
+            return true;
+        }
+        bool take_from_balance(int amount) {
+            if(amount > _balance || amount < 0) {
+                return false;
+            }
+            _balance -= amount;
             return true;
         }
 

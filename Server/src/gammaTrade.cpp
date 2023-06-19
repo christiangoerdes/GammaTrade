@@ -41,7 +41,17 @@ int GammaTrade::login(std::string name, std::string password) {
 bool GammaTrade::deposit(std::string name, std::string password, int amount) {
     for(Account account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
-            return account.update_balance(amount);
+            return account.add_to_balance(amount);
+        }
+    }
+    return false;
+}
+
+// Withdraw money from your account 
+bool GammaTrade::withdraw(std::string name, std::string password, int amount) {
+    for(Account account : accounts) {
+        if(account.get_name() == name && account.get_password() == password) {
+            return account.take_from_balance(amount);
         }
     }
     return false;
