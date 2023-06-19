@@ -7,7 +7,8 @@ tags:
   - name: Account
   - name: Market
 paths:
-  /account:
+
+  /signup:
     post:
       tags: 
         - Account
@@ -59,12 +60,11 @@ paths:
           description: OK
         '403': 
           description: FORBIDDEN
-          
-
 
 components:
 
   parameters:
+
     Name:
       name: name
       in: path
@@ -85,6 +85,7 @@ components:
         type: number 
 
   schemas:
+
     Market:
       type: object
       properties:
