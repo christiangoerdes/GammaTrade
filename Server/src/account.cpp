@@ -54,3 +54,6 @@ std::string& Account::get_password() {
 double& Account::get_balance() {
     return _balance;
 }
+std::unordered_map<std::string, int>& Account::get_stocks() {
+    return _stocks;
+}

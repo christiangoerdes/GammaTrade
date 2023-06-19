@@ -22,5 +22,6 @@ PYBIND11_MODULE(gammaTrade, m) {
         .def("withdraw", &GammaTrade::withdraw)
         .def("buy_stocks", &GammaTrade::buy_stocks)
         .def("sell_stocks", &GammaTrade::sell_stocks)
-        .def("get_stocks", &GammaTrade::get_stocks);
+        .def("get_stocks", &GammaTrade::get_stocks)
+        .def("get_stocks_for", &GammaTrade::get_stocks_for);
 }

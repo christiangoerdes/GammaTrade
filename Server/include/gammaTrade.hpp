@@ -34,6 +34,8 @@ class GammaTrade {
 
         std::vector<Stock> get_stocks(); 
 
+        std::unordered_map<std::string, int> get_stocks_for(std::string name, std::string password); 
+
     private: 
         std::vector<Account> accounts; 
         std::unordered_map<std::string, Stock> stocks;

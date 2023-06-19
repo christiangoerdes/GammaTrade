@@ -59,24 +59,38 @@ async def withdraw(name: str, password: str, amount: float):
 
 # endpoint to buy stocks
 @api.get("/buy-stocks")
-async def additem(name: str, password: str, stock: str, quantity : int):
+async def buyStocks(name: str, password: str, stock: str, quantity : int):
     return {"success": g.buy_stocks(name, password, stock, quantity)}
 
 
 # endpoint to sell stocks
 @api.get("/sell-stocks")
-async def market(name: str, password: str, stock: str, quantity : int):
+async def sellStocks(name: str, password: str, stock: str, quantity : int):
     return {"success": g.sell_stocks(name, password, stock, quantity)}
 
 
 # endpoint to sell stocks
 @api.get("/get-stocks")
-async def market():
+async def getStocks():
     return {"stocks": get_stocks()}
 
+@api.get("/get-my-stocks")
+async def getMyStocks(name: str, password: str):
+    return {"stocks": get_my_stocks(name, password)}
 
 def get_stocks():
     s = g.get_stocks()
+    stocks = []
+    for stock in s:
+        stock_obj = {
+            "name": stock.getName(),
+            "price": stock.getPrice()
+        }
+        stocks.append(stock_obj)
+    return stocks
+
+def get_my_stocks(name, password):
+    s = g.get_stocks_for(name, password)
     stocks = []
     for stock in s:
         stock_obj = {

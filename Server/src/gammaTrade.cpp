@@ -130,10 +130,16 @@ bool GammaTrade::sell_stocks(std::string name, std::string password, std::string
 
 std::vector<Stock> GammaTrade::get_stocks() {
     std::vector<Stock> result;
-    
     for (const auto& pair : stocks) {
         result.push_back(pair.second);
     }
-    
     return result;
+}
+
+std::unordered_map<std::string, int> GammaTrade::get_stocks_for(std::string name, std::string password) {
+    for(Account& account : accounts) {
+        if(account.get_name() == name && account.get_password() == password) {
+            return account.get_stocks();
+        }
+    }
 }
