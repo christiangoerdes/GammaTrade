@@ -19,6 +19,5 @@ class GammaTrade {
         bool withdraw(std::string name, std::string password, int amount);
 
     private: 
-        std::vector<Item> items_for_sale; 
         std::vector<Account> accounts; 
 };
