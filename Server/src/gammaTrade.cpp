@@ -25,7 +25,7 @@ GammaTrade::GammaTrade(const int timespan) : _timespan(timespan) {
     };
 
     // start market loop
-    std::async(std::launch::async, &GammaTrade::run_market, this, 1000);
+    //std::async(std::launch::async, &GammaTrade::run_market, this, 1000);
 
 }
 

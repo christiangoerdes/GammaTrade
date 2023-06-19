@@ -13,7 +13,8 @@ class Stock {
         const std::list<double>& getPriceHistory();
 
         const double getPrice();
-
+        const std::string getName();
+        
     private:
         const std::string _name;
         const double _start;

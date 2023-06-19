@@ -32,3 +32,7 @@ const std::list<double>& Stock::getPriceHistory() {
 const double Stock::getPrice() {
     return _price_history.back();
 }
+
+const std::string Stock::getName() {
+    return _name;
+}

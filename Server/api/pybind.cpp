@@ -5,6 +5,14 @@
 namespace py = pybind11;
 
 PYBIND11_MODULE(gammaTrade, m) {
+     // Map the Stock class
+    py::class_<Stock>(m, "Stock")
+        .def(py::init<const std::string, const double, const double, const double, const double>())
+        .def(py::init<>())
+        .def("update", &Stock::update)
+        .def("getPriceHistory", &Stock::getPriceHistory)
+        .def("getName", &Stock::getName)
+        .def("getPrice", &Stock::getPrice);
     // Map the GammaTrade class
     py::class_<GammaTrade>(m, "GammaTrade") 
         .def(py::init<int>())
