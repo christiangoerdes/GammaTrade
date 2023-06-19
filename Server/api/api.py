@@ -145,4 +145,4 @@ async def foo():
         plot_image = generate_plot(price_history)
         plots.append(plot_image)
 
-    return [FileResponse(plot, media_type='image/png') for plot in plots][-1]
+    return [FileResponse(plot, media_type='image/png') for plot in plots][1]
