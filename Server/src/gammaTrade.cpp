@@ -126,6 +126,13 @@ bool GammaTrade::sell_stocks(std::string name, std::string password, std::string
     return false;
 }
 
-std::unordered_map<std::string, Stock> GammaTrade::get_stocks() {
-    return stocks;
+
+std::vector<Stock> GammaTrade::get_stocks() {
+    std::vector<Stock> result;
+    
+    for (const auto& pair : stocks) {
+        result.push_back(pair.second);
+    }
+    
+    return result;
 }

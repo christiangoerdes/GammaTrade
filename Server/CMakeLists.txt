@@ -19,7 +19,7 @@ set(CMAKE_CXX_STANDARD 17)
 include_directories(include)
 
 # use if not like docker
-# set(pybind11_DIR "/home/sergej/.local/lib/python3.10/site-packages/pybind11/share/cmake/pybind11")
+set(pybind11_DIR "/home/chrisi/.local/lib/python3.10/site-packages/pybind11/share/cmake/pybind11")
 
 find_package(pybind11 REQUIRED)
 

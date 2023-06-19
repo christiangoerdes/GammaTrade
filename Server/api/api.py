@@ -11,7 +11,7 @@ import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 
 # initialize marketplace
-b = GammaTrade(100)
+g = GammaTrade(100)
 
 # initialize API
 api = FastAPI()
@@ -26,69 +26,62 @@ api.add_middleware(
 )
 
 
-# Accout section
 
 # sign up endpoint 
-@api.post("/sign-up")
+@api.get("/sign-up")
 async def signUp(name: str, password: str):
-    return {
-
-    }
+    return {"success": g.sign_up(name, password)}
 
 
 # login endpoint 
 @api.get("/login")
 async def login(name: str, password: str):
-    return {
-        
-    }
+    stat = g.login(name, password)
+    if(stat == 0):
+        return {"status": True}
+    elif(stat == 1): 
+        return {"status": "wrong password"}
+    else:
+        return {"status": "User not found"}
 
 
 # deposit endpoint 
-@api.put("/deposit")
+@api.get("/deposit")
 async def deposit(name: str, password: str, amount: float):
-    return {
-        
-    }
+    return {"success": g.deposit(name, password, amount)}
 
 
 # withdraw endpoint 
-@api.put("/withdraw")
+@api.get("/withdraw")
 async def withdraw(name: str, password: str, amount: float):
-    return {
-        
-    }
+    return {"success": g.withdraw(name, password, amount)}
 
 
-# endpoint to add an item 
-@api.post("/add-item")
-async def additem(name: str, password: str, itemName: str, itemPrice : float):
-    return {
-        
-    }
+# endpoint to buy stocks
+@api.get("/buy-stocks")
+async def additem(name: str, password: str, stock: str, quantity : int):
+    return {"success": g.buy_stocks(name, password, stock, quantity)}
 
 
-# Market section
+# endpoint to sell stocks
+@api.get("/sell-stocks")
+async def market(name: str, password: str, stock: str, quantity : int):
+    return {"success": g.sell_stocks(name, password, stock, quantity)}
 
-# endpoint to get all items up for sale
-@api.get("/market")
+
+# endpoint to sell stocks
+@api.get("/get-stocks")
 async def market():
-    return {
-        
-    }
+    return {"stocks": get_stocks()}
 
 
-# endpoint to sell an item 
-@api.put("/sell")
-async def sell(name: str, password: str, itemName: str):
-    return {
-        
-    }
-
-
-# endpoint to buy an item 
-@api.put("/buy")
-async def buy(name: str, password: str, itemName: str):
-    return {
-        
-    }
+def get_stocks():
+    s = g.get_stocks()
+    stocks = []
+    for stock in s:
+        stock_obj = {
+            "name": stock.getName(),
+            "price": stock.getPrice()
+        }
+        stocks.append(stock_obj)
+    return stocks
