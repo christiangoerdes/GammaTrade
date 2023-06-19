@@ -5,7 +5,7 @@
 
 GammaTrade::GammaTrade(const int timespan) : _timespan(timespan) {
     // initialize all stocks
-    stocks = { 
+    stocks = {
         {"DogeCoin", Stock("DogeCoin", 1000.00, 50.00, 10.00, _timespan)},
         {"TechFlair Corp", Stock("TechFlair Corp", 200.00, 5.00, 15.00, _timespan)},
         {"GreenWorld Energy", Stock("GreenWorld Energy", 75.00, 2.00, 10.00, _timespan)},
@@ -24,14 +24,29 @@ GammaTrade::GammaTrade(const int timespan) : _timespan(timespan) {
         {"BrightFutures Education", Stock("BrightFutures Education", 100.00, 5.00, 15.00, _timespan)},
     };
 
-    // start market loop
-    //std::async(std::launch::async, &GammaTrade::run_market, this, 1000);
-
+    price_thread = std::thread(&GammaTrade::update_prices, this, 1000);
 }
 
-void GammaTrade::run_market(const int dt) {
-    while (true) {
-        std::this_thread::sleep_for(std::chrono::milliseconds(dt));
+GammaTrade::~GammaTrade() {
+        if (stop == false) {
+            stop_updates();
+        }
+        if (price_thread.joinable()) {
+            price_thread.join();
+        }
+    }
+
+// Stops the price updating thread
+void GammaTrade::stop_updates() {
+    stop = true;
+}
+
+void GammaTrade::update_prices(const int dt) {
+
+    while (!stop) {
+        std::this_thread::sleep_for(std::chrono::seconds(1));
+        std::lock_guard<std::mutex> lock(mtx);
+        // Update the price here
         for (auto& [key, stock] : stocks) {
             stock.update(dt);
         }
@@ -91,6 +106,7 @@ bool GammaTrade::buy_stocks(std::string name, std::string password, std::string 
     for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
             if(stocks.find(stock) != stocks.end()) {
+                std::lock_guard<std::mutex> lock(mtx);
                 return account.buy_stock(stock, quantity, stocks[stock].getPrice()*quantity); 
             }
         }
@@ -102,6 +118,7 @@ bool GammaTrade::sell_stocks(std::string name, std::string password, std::string
     for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
             if(stocks.find(stock) != stocks.end()) {
+                std::lock_guard<std::mutex> lock(mtx);
                 return account.sell_stock(stock, quantity, stocks[stock].getPrice()*quantity); 
             }
         }

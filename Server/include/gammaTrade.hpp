@@ -1,11 +1,12 @@
-#pragma once 
+#pragma once
 
 #include "account.hpp"
 #include <iostream>
 #include <vector>
 #include <thread>
 #include <chrono>
-#include <future>
+#include <mutex>
+#include <atomic>
 
 // GammaTrade class 
 class GammaTrade {
@@ -13,7 +14,11 @@ class GammaTrade {
         // Constructor 
         GammaTrade(const int timespan);
 
-        void run_market(const int dt);
+        ~GammaTrade();
+
+        void update_prices(const int dt);
+
+        void stop_updates();
 
         bool sign_up(std::string name, std::string password);
 
@@ -35,4 +40,7 @@ class GammaTrade {
         std::vector<Account> accounts; 
         std::unordered_map<std::string, Stock> stocks;
         const int _timespan;
+        std::atomic<bool> stop{false};  // flag to stop the thread when we're done
+        std::mutex mtx;
+        std::thread price_thread;
 };
