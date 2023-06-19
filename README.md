@@ -1,4 +1,4 @@
-# ProjektGamma
+# Gamma Trade
 
 ## Mitglieder
 - Ibrahim Fakhir
