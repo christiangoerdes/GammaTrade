@@ -19,6 +19,22 @@ bool GammaTrade::sign_up(std::string name, std::string password) {
     return true; 
 }
 
+int GammaTrade::login(std::string name, std::string password) {
+    for(Account account : accounts) {
+        // If the login is possible return 0 
+        if(account.name == name && account.password == password) {
+            return 0; 
+        // If the login failed because of a wrong password reutrn 1 
+        }else if (account.name == name && account.password != password) {
+            return 1; 
+        }
+    }
+    // return 2 which means account not found 
+    return 2; 
+}
+
+
+
 
 // Implementation for the Item class
 
