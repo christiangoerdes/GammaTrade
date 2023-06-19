@@ -2,8 +2,8 @@
 #include <cmath>
 #include <random>
 
-Stock::Stock(const double start, const double tendenz, const double sd, const double timespan) 
-    : _start(start), _tendenz(tendenz), _sd(sd), _timespan(timespan), _price_history(std::list<double>({start})) {
+Stock::Stock(const std::string name, const double start, const double tendenz, const double sd, const double timespan) 
+    : _name(name), _start(start), _tendenz(tendenz), _sd(sd), _timespan(timespan), _price_history(std::list<double>({start})) {
 }
 
 void Stock::update(const double dt) {

@@ -5,7 +5,7 @@
 
 class Stock {
     public:
-        Stock(const double start, const double tendenz, const double sd, const double timespan);
+        Stock(const std::string name, const double start, const double tendenz, const double sd, const double timespan);
 
         void update(const double dt);
 
@@ -14,6 +14,7 @@ class Stock {
         }
 
     private:
+        const std::string _name;
         const double _start;
         const double _tendenz;
         const double _sd;
