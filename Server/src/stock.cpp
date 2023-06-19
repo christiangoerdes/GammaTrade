@@ -1,4 +1,4 @@
-#include <../include/stock.hpp>
+#include "../include/stock.hpp"
 #include <cmath>
 #include <random>
 
