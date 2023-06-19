@@ -3,7 +3,7 @@
 
 // Implementation for the GammaTrade class
 
-GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&GammaTrade::update_prices, this, 1000) {
+GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&GammaTrade::update_prices, this, 1) {
     // initialize all stocks
     stocks = {
         {"DogeCoin", Stock("DogeCoin", 1000.00, 50.00, 10.00, _timespan)},
@@ -24,7 +24,7 @@ GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&
         {"BrightFutures Education", Stock("BrightFutures Education", 100.00, 5.00, 15.00, _timespan)},
     };
 
-    // price_thread.detach(); // Detach the thread
+    price_thread.detach(); // Detach the thread
 
 }
 
