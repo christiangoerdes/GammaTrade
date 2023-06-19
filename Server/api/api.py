@@ -114,10 +114,12 @@ history = []
 def get_history():
     stocks = g.get_stocks()
     for stock in stocks: 
-        history.append(stock.getPriceHistory())
+        history.append(np.array(stock.getPriceHistory()))
+    print(history)
 
 def generate_plot(price_history):
-    plt.plot(price_history)
+    time = range(len(price_history))
+    plt.plot(time, price_history)
     plt.title('Price History')
     plt.xlabel('Time')
     plt.ylabel('Value')
@@ -135,7 +137,7 @@ def generate_plot(price_history):
 async def foo():
     get_history()
     plots = []
-    for i, price_history in enumerate(history):
+    for price_history in history:
         plot_image = generate_plot(price_history)
         plots.append(plot_image)
 
