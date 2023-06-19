@@ -22,6 +22,7 @@ class Account {
         std::string& get_name();
         std::string& get_password();
         double& get_balance();
+        std::unordered_map<std::string, int>& get_stocks();
 
     private: 
         // Attributes 
