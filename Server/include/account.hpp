@@ -1,4 +1,5 @@
 #pragma once 
+
 #include <iostream>
 #include <map>
 #include <string>
@@ -31,21 +32,21 @@ class Account {
         }
 
         // Getter 
-        std::string get_name() {
+        std::string& get_name() {
             return _name;
         }
-        std::string get_password() {
+        std::string& get_password() {
             return _password;
         }
-        double get_balance() {
+        double& get_balance() {
             return _balance;
         }
 
 
     private: 
         // Attributes 
-        std::string name; 
-        std::string password; 
-        double balance; 
-        std::unordered_map<std::string, int> stocks; 
+        std::string _name; 
+        std::string _password; 
+        double _balance; 
+        std::map<std::string, int> _stocks; 
 }; 
