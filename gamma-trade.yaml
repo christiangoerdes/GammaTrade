@@ -8,7 +8,7 @@ tags:
   - name: Market
 paths:
 
-  /signup:
+  /sign-up:
     post:
       tags: 
         - Account
