@@ -21,7 +21,7 @@ bool Account::take_from_balance(int amount) {
     _balance -= amount;
     return true;
 }
-bool Account::buy_stock(std::string stock, int quantity, int price) {
+bool Account::buy_stock(std::string stock, int quantity, double price) {
     if(price > _balance) {
         return false;
     }
@@ -34,7 +34,7 @@ bool Account::buy_stock(std::string stock, int quantity, int price) {
     return true;
 }
 
-bool Account::sell_stock(std::string stock, int quantity, int price) {
+bool Account::sell_stock(std::string stock, int quantity, double price) {
     if(_stocks.find(stock) == _stocks.end() || quantity > _stocks[stock]) {
         return false;
     }

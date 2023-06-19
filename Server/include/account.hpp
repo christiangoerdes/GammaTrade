@@ -3,7 +3,7 @@
 #include <iostream>
 #include <unordered_map>
 #include <string>
-#include <stock.hpp>
+#include "stock.hpp"
 
 // Account class 
 class Account {
@@ -14,9 +14,9 @@ class Account {
         // Update the account balance
         bool add_to_balance(int amount);
         bool take_from_balance(int amount);
-        bool buy_stock(std::string stock, int quantity, int price);
+        bool buy_stock(std::string stock, int quantity, double price);
 
-        bool sell_stock(std::string stock, int quantity, int price);
+        bool sell_stock(std::string stock, int quantity, double price);
 
         // Getter 
         std::string& get_name();

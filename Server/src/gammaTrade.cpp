@@ -110,6 +110,6 @@ bool GammaTrade::sell_stocks(std::string name, std::string password, std::string
     return false;
 }
 
-std::map<std::string, Stock> GammaTrade::get_stocks() {
+std::unordered_map<std::string, Stock> GammaTrade::get_stocks() {
     return stocks;
 }

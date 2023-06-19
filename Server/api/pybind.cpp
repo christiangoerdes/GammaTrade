@@ -7,7 +7,7 @@ namespace py = pybind11;
 PYBIND11_MODULE(gammaTrade, m) {
     // Map the GammaTrade class
     py::class_<GammaTrade>(m, "GammaTrade") 
-        .def(py::init())
+        .def(py::init<int>())
         .def("sign_up", &GammaTrade::sign_up)
         .def("login", &GammaTrade::login)
         .def("deposit", &GammaTrade::deposit)
