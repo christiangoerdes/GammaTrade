@@ -19,6 +19,8 @@ paths:
       responses:
         '200': 
           description: OK
+        '400':
+          description: FORBIDDEN
   /login:
     get:
       tags:
@@ -60,6 +62,21 @@ paths:
           description: OK
         '403': 
           description: FORBIDDEN
+  /add-item:
+    post: 
+      tags:
+        - Account
+      summary: add a new item to your account 
+      parameters:
+        - $ref: '#/components/parameters/Name'
+        - $ref: '#/components/parameters/Password'
+        - $ref: '#/components/parameters/ItemName'
+        - $ref: '#/components/parameters/ItemPrice'
+      responses:
+        '200': 
+          description: OK
+        '400':  
+          description: FORBIDDEN
 
 components:
 
@@ -83,6 +100,19 @@ components:
       required: true
       schema: 
         type: number 
+    ItemName:
+      name: itemName
+      in: path
+      required: true
+      schema:
+        type: string
+    ItemPrice:
+      name: itemPrice
+      in: path
+      required: true
+      schema:
+        type: number
+
 
   schemas:
 
