@@ -7,7 +7,7 @@
 class Account {
     public: 
         // Constructor 
-        Account(std::string name, std::string password, double balance);
+        Account(std::string name, std::string password);
         
         // Attributes 
         std::string name; 
