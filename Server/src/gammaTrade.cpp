@@ -10,12 +10,11 @@ GammaTrade::GammaTrade() {
 
 // Implementation for the Item class
 
-Item::Item(std::string name) {
-
-}
+/*
 Item::Item(std::string name, double price) {
     this->name = name;
 }
+*/
 
 // Implementation for the Account class
 
