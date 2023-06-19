@@ -5,6 +5,8 @@
 Stock::Stock(const std::string name, const double start, const double tendenz, const double sd, const double timespan) 
     : _name(name), _start(start), _tendenz(tendenz), _sd(sd), _timespan(timespan), _price_history(std::list<double>({start})) {
 }
+Stock::Stock() : _name(NULL), _start(NULL), _tendenz(NULL), _sd(NULL), _timespan(NULL), _price_history(std::list<double>({NULL})) {
+}
 
 void Stock::update(const int dt) {
 

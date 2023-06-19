@@ -4,10 +4,9 @@
 // Implementation for the GammaTrade class
 
 GammaTrade::GammaTrade(const int timespan) : _timespan(timespan) {
-
     // initialize all stocks
     stocks = { 
-        {"DogeCoin", Stock("DogeCoin", 1000, 50, 10, _timespan)},
+        {"DogeCoin", Stock("DogeCoin", 1000.00, 50.00, 10.00, _timespan)},
         {"TechFlair Corp", Stock("TechFlair Corp", 200.00, 5.00, 15.00, _timespan)},
         {"GreenWorld Energy", Stock("GreenWorld Energy", 75.00, 2.00, 10.00, _timespan)},
         {"BlueChip Trust", Stock("BlueChip Trust", 500.00, 1.00, 5.00, _timespan)},
@@ -42,7 +41,7 @@ void GammaTrade::run_market(const int dt) {
 // Create a new account
 bool GammaTrade::sign_up(std::string name, std::string password) {
     // Check if an account with this name already exists
-    for(Account account : accounts) {
+    for(Account& account : accounts) {
         if(account.get_name() == name) {
             // If an account with this name already exists, return false
             return false; 
@@ -55,7 +54,7 @@ bool GammaTrade::sign_up(std::string name, std::string password) {
 
 // Check if login is valid
 int GammaTrade::login(std::string name, std::string password) {
-    for(Account account : accounts) {
+    for(Account& account : accounts) {
         // If the login is possible return 0 
         if(account.get_name() == name && account.get_password() == password) {
             return 0; 
@@ -70,7 +69,7 @@ int GammaTrade::login(std::string name, std::string password) {
 
 // Deposit money into your account
 bool GammaTrade::deposit(std::string name, std::string password, int amount) {
-    for(Account account : accounts) {
+    for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
             return account.add_to_balance(amount);
         }
@@ -80,7 +79,7 @@ bool GammaTrade::deposit(std::string name, std::string password, int amount) {
 
 // Withdraw money from your account 
 bool GammaTrade::withdraw(std::string name, std::string password, int amount) {
-    for(Account account : accounts) {
+    for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
             return account.take_from_balance(amount);
         }
@@ -89,7 +88,7 @@ bool GammaTrade::withdraw(std::string name, std::string password, int amount) {
 }
 
 bool GammaTrade::buy_stocks(std::string name, std::string password, std::string stock, int quantity) {
-    for(Account account : accounts) {
+    for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
             if(stocks.find(stock) != stocks.end()) {
                 return account.buy_stock(stock, quantity, stocks[stock].getPrice()*quantity); 
@@ -100,7 +99,7 @@ bool GammaTrade::buy_stocks(std::string name, std::string password, std::string 
 }
 
 bool GammaTrade::sell_stocks(std::string name, std::string password, std::string stock, int quantity) {
-    for(Account account : accounts) {
+    for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
             if(stocks.find(stock) != stocks.end()) {
                 return account.sell_stock(stock, quantity, stocks[stock].getPrice()*quantity); 
