@@ -2,10 +2,11 @@
 
 #include <iostream>
 #include <list>
+#include <random>
 
 class Stock {
     public:
-        Stock(const std::string name, const double start, const double tendenz, const double sd, const double timespan);
+        Stock(const std::string name, const double start, const double mean, const double stddev, const int timespan);
         Stock();
 
         void update(const int dt);
@@ -18,9 +19,12 @@ class Stock {
     private:
         const std::string _name;
         const double _start;
-        const double _tendenz;
-        const double _sd;
-        const double _timespan;
+        const double _mean;
+        const double _stddev;
+        const int _timespan;
         std::list<double> _price_history;
+
+        std::default_random_engine generator;
+        std::normal_distribution<double> distribution;
 
 };
