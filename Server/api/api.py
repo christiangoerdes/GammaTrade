@@ -126,7 +126,6 @@ def generate_plot(price_history):
     plt.ylabel('Value')
     plt.grid(True)
 
-    print(time)
     # Save the plot image to a temporary file
     with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
         plt.savefig(temp_file, format='png')
@@ -143,4 +142,4 @@ async def foo():
         plot_image = generate_plot(price_history)
         plots.append(plot_image)
 
-    return [FileResponse(plot, media_type='image/png') for plot in plots][1]
+    return [FileResponse(plot, media_type='image/png') for plot in plots][4]
