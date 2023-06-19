@@ -105,7 +105,21 @@ paths:
           description: OK
         '403':
           description: FORBIDDEN
-
+  /buy:
+    put:
+      tags:
+        - Market 
+      summary: buy an item
+      parameters:
+        - $ref: '#/components/parameters/Name'
+        - $ref: '#/components/parameters/Password'
+        - $ref: '#/components/parameters/ItemName' 
+      responses:
+        '200':
+          description: OK
+        '403': 
+          description: FORBIDDEN
+  
 components:
 
   parameters:
