@@ -7,17 +7,17 @@ class Stock {
     public:
         Stock(const double start, const double tendenz, const double sd, const double timespan);
 
-        void update(double dt);
+        void update(const double dt);
 
         std::list<double>& getPriceHistory() {
-            return price_history;
+            return _price_history;
         }
 
     private:
-        const double start;
-        const double tendenz;
-        const double sd;
-        const double timespan;
-        std::list<double> price_history;
+        const double _start;
+        const double _tendenz;
+        const double _sd;
+        const double _timespan;
+        std::list<double> _price_history;
 
 };
