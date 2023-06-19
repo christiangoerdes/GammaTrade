@@ -43,6 +43,18 @@ class Account {
             return true;
         }
 
+        bool sell_stock(std::string stock, int quantity, int price) {
+
+            if(_stocks.find(stock) == _stocks.end() || quantity > _stocks[stock]) {
+                return false;
+            }
+
+            _stocks[stock] -= quantity;
+            _balance += price;
+            return true;
+
+        }
+
         // Getter 
         std::string& get_name() {
             return _name;

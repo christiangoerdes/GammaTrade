@@ -66,3 +66,14 @@ bool GammaTrade::buy_stocks(std::string name, std::string password, std::string 
     }
     return false;
 }
+
+bool GammaTrade::sell_stocks(std::string name, std::string password, std::string stock, int quantity) {
+    for(Account account : accounts) {
+        if(account.get_name() == name && account.get_password() == password) {
+            if(stocks.find(stock) != stocks.end()) {
+                return account.sell_stock(stock, quantity, stocks[stock].getPrice()*quantity); 
+            }
+        }
+    }
+    return false;
+}
