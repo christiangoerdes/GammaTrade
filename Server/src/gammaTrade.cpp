@@ -8,6 +8,7 @@ GammaTrade::GammaTrade() {
 
 }
 
+// Create a new account
 bool GammaTrade::sign_up(std::string name, std::string password) {
     // Check if an account with this name already exists
     for(Account account : accounts) {
@@ -21,6 +22,7 @@ bool GammaTrade::sign_up(std::string name, std::string password) {
     return true; 
 }
 
+// Check if login is valid
 int GammaTrade::login(std::string name, std::string password) {
     for(Account account : accounts) {
         // If the login is possible return 0 
@@ -33,4 +35,14 @@ int GammaTrade::login(std::string name, std::string password) {
     }
     // return 2 which means account not found 
     return 2; 
+}
+
+// Deposit money into your account
+bool GammaTrade::deposit(std::string name, std::string password, int amount) {
+    for(Account account : accounts) {
+        if(account.get_name() == name && account.get_password() == password) {
+            return account.update_balance(amount);
+        }
+    }
+    return false;
 }

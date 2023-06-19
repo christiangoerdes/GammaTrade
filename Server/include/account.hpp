@@ -13,6 +13,15 @@ class Account {
             _balance = 0;
         }
         
+        // Update the account balance
+        bool update_balance(int amount) {
+            if(amount < 0) {
+                return false;
+            }
+            _balance += amount;
+            return true;
+        }
+
         // Getter 
         std::string get_name() {
             return _name;
@@ -23,6 +32,7 @@ class Account {
         double get_balance() {
             return _balance;
         }
+
 
     private: 
         // Attributes 

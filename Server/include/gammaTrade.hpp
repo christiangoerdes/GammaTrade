@@ -15,6 +15,8 @@ class GammaTrade {
 
         int login(std::string name, std::string password);
 
+        bool deposit(std::string name, std::string password, int amount);
+
     private: 
         std::vector<Item> items_for_sale; 
         std::vector<Account> accounts; 
