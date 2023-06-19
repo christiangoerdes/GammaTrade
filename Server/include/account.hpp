@@ -1,7 +1,8 @@
 #pragma once 
-#include "item.hpp"
 #include <iostream>
 #include <unordered_map>
+#include <string>
+#include <stock.hpp>
 
 // Account class 
 class Account {
@@ -13,5 +14,5 @@ class Account {
         std::string name; 
         std::string password; 
         double balance; 
-        std::unordered_map<Item, int> stocks; 
+        std::unordered_map<std::string, int> stocks; 
 }; 
