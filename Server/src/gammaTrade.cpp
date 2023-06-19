@@ -11,10 +11,12 @@ GammaTrade::GammaTrade() {
 bool GammaTrade::sign_up(std::string name, std::string password) {
     // Check if an account with this name already exists
     for(Account account : accounts) {
-        if(account.name == name) {
+        if(account.get_name() == name) {
+            // If an account with this name already exists, return false
             return false; 
         }
     }
+    // Create new account with the given name 
     accounts.push_back(Account(name, password)); 
     return true; 
 }
@@ -22,32 +24,13 @@ bool GammaTrade::sign_up(std::string name, std::string password) {
 int GammaTrade::login(std::string name, std::string password) {
     for(Account account : accounts) {
         // If the login is possible return 0 
-        if(account.name == name && account.password == password) {
+        if(account.get_name() == name && account.get_password() == password) {
             return 0; 
         // If the login failed because of a wrong password reutrn 1 
-        }else if (account.name == name && account.password != password) {
+        }else if (account.get_name() == name && account.get_password() != password) {
             return 1; 
         }
     }
     // return 2 which means account not found 
     return 2; 
-}
-
-
-
-
-// Implementation for the Item class
-
-/*
-Item::Item(std::string name, double price) {
-    this->name = name;
-}
-*/
-
-// Implementation for the Account class
-
-Account::Account(std::string name, std::string password) {
-    this->name = name;
-    this->password = password;
-    balance = 0;
 }
