@@ -27,6 +27,8 @@ class GammaTrade {
 
         bool sell_stocks(std::string name, std::string password, std::string stock, int quantity);
 
+        std::map<std::string, Stock> get_stocks(); 
+
     private: 
         std::vector<Account> accounts; 
         std::unordered_map<std::string, Stock> stocks;
