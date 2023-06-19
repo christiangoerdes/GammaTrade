@@ -21,5 +21,5 @@ Item::Item(std::string name, double price) {
 Account::Account(std::string name, std::string password) {
     this->name = name;
     this->password = password;
-    balance = 0; 
+    balance = 0;
 }

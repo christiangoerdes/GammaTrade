@@ -7,12 +7,12 @@
 
 // GammaTrade class 
 class GammaTrade {
-public:
-    // Constructor 
-    GammaTrade();
+    public:
+        // Constructor 
+        GammaTrade();
 
 
-private: 
-    std::vector<Item> items_for_sale; 
-    std::vector<Account> accounts; 
+    private: 
+        std::vector<Item> items_for_sale; 
+        std::vector<Account> accounts; 
 };
