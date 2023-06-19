@@ -11,7 +11,7 @@ import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 
 # initialize marketplace
-g = GammaTrade(100)
+g = GammaTrade(1)
 
 # initialize API
 api = FastAPI()
