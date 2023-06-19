@@ -12,8 +12,9 @@ paths:
       tags: 
         - Account
       summary: create an account
-      requestBody: 
-        $ref: '#/components/requestBodies/NewAccount'
+      parameters:
+        - $ref: '#/components/parameters/Name'
+        - $ref: '#/components/parameters/Password'
       responses:
         '200': 
           description: OK
@@ -32,6 +33,33 @@ paths:
           description: FORBIDDEN
         '404': 
           description: NOT FOUND
+  /deposit: 
+    put: 
+      tags:
+        - Account
+      summary: deposit into your account
+      parameters:
+        - $ref: '#/components/parameters/Name'
+        - $ref: '#/components/parameters/Password'
+        - $ref: '#/components/parameters/Amount'
+      responses:
+        '200': 
+          description: OK
+  /withdraw: 
+    put: 
+      tags:
+        - Account
+      summary: withdraw from your account
+      parameters:
+        - $ref: '#/components/parameters/Name'
+        - $ref: '#/components/parameters/Password'
+        - $ref: '#/components/parameters/Amount'
+      responses:
+        '200': 
+          description: OK
+        '403': 
+          description: FORBIDDEN
+          
 
 
 components:
@@ -43,21 +71,18 @@ components:
       required: true
       schema: 
         type: string
-
     Password:
       name: password
       in: path
       required: true
       schema: 
         type: string
-
-
-  requestBodies:
-    NewAccount:
-      content:
-        application/json:
-          schema: 
-            $ref: '#/components/schemas/NewAccount'
+    Amount:
+      name: amount 
+      in: path
+      required: true
+      schema: 
+        type: number 
 
   schemas:
     Market:
@@ -67,13 +92,6 @@ components:
           type: array
           items:
             $ref: "#/components/schemas/Item"
-    NewAccount:
-      type: object
-      properties:
-        name: 
-          type: string
-        password: 
-          type: string
     Account:
       type: object
       properties:
