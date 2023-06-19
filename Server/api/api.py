@@ -28,20 +28,28 @@ api.add_middleware(
 # Accout section
 
 @api.post("/sign-up")
+async def signUp(name: str, password: str):
 
 @api.get("/login")
+async def login(name: str, password: str):
 
 @api.put("/deposit")
+async def deposit(name: str, password: str):
 
 @api.put("/withdraw")
+async def withdraw(name: str, password: str):
 
 @api.post("/add-item")
+async def additem(name: str, password: str):
 
 
 # Market section
 
 @api.get("/market")
+async def market():
 
 @api.put("/sell")
+async def sell(name: str, password: str):
 
 @api.put("/buy")
+async def buy(name: str, password: str):
