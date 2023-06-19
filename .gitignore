@@ -2,3 +2,4 @@ fastapi_project
 .vscode
 .idea
 build
+__pycache__
