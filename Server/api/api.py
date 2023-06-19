@@ -23,4 +23,25 @@ api.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-  
+
+
+# Accout section
+
+@api.post("/sign-up")
+
+@api.get("/login")
+
+@api.put("/deposit")
+
+@api.put("/withdraw")
+
+@api.post("/add-item")
+
+
+# Market section
+
+@api.get("/market")
+
+@api.put("/sell")
+
+@api.put("/buy")
