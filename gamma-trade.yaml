@@ -75,7 +75,35 @@ paths:
       responses:
         '200': 
           description: OK
-        '400':  
+        '403':  
+          description: FORBIDDEN
+
+  /market:
+    get:
+      tags:
+        - Market
+      summary: get all goods up for sale
+      responses:
+        '200': 
+          description: OK
+          content:
+            application/json:
+              schema: 
+                $ref: '#/components/schemas/Market'
+  
+  /sell:
+    put:
+      tags:
+        - Market
+      summary: put an item up for sale
+      parameters:
+        - $ref: '#/components/parameters/Name'
+        - $ref: '#/components/parameters/Password'
+        - $ref: '#/components/parameters/ItemName' 
+      responses:
+        '200': 
+          description: OK
+        '403':
           description: FORBIDDEN
 
 components:
@@ -113,6 +141,7 @@ components:
       schema:
         type: number
 
+    
 
   schemas:
 
@@ -143,3 +172,5 @@ components:
           type: string
         price:
           type: number
+        owner:
+          type: string
