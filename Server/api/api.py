@@ -107,52 +107,36 @@ def get_my_stocks(name, password):
 
 import numpy as np
 import matplotlib.pyplot as plt
+from io import BytesIO
+import tempfile
 
-def kursverlauf(tendenz, streuung, dt, start, anzahl):
-    sqdt = np.sqrt(dt)
-    kurs = np.zeros(anzahl)
-    kurs[0] = start
-    for i in range(anzahl - 1):
-        Y = 2 * np.random.rand() - 1.0
-        kurs[i + 1] = kurs[i] * (1 + tendenz * dt + streuung * sqdt * Y)
-    return kurs
+history = []
+def get_history():
+    stocks = g.get_stocks()
+    for stock in stocks: 
+        history.append(stock.getPriceHistory())
 
-np.random.seed()
+def generate_plot(price_history):
+    plt.plot(price_history)
+    plt.title('Price History')
+    plt.xlabel('Time')
+    plt.ylabel('Value')
+    plt.grid(True)
 
-def generate_plots(objects):
-    plots = []
-    for i, obj in enumerate(objects):
-        start = obj.get('start', 5.0 * (2 * np.random.rand() - 1.0))
-        drift = obj.get('drift', 0.3 * (2 * np.random.rand() - 1.0))
-        tendenz = obj.get('tendenz', drift)
-        streuung = obj.get('sd', 0.8)
-        dt = obj.get('dt', 0.001)
-        anzahl = obj.get('anzahl', 1000)
+    # Save the plot image to a temporary file
+    with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
+        plt.savefig(temp_file, format='png')
+        temp_file_path = temp_file.name
 
-        kurs = kursverlauf(tendenz=tendenz, streuung=streuung, dt=dt, start=start, anzahl=anzahl)
-        plt.plot(kurs)
-        plt.title(f'Object {i+1}')
-        plt.xlabel('Time')
-        plt.ylabel('Value')
-        plt.grid(True)
-        plot_path = f'object_{i+1}.png'
-        plt.savefig(plot_path)
-        plots.append(plot_path)
-        plt.clf()  # Clear the figure for the next plot
-    return plots
-
-objects = [
-    {'start': 2.0, 'drift': 0.5, 'tendenz': 0.5, 'sd': 0.6, 'dt': 0.001, 'anzahl': 1000},
-    {'start': -1.0, 'drift': -0.3, 'tendenz': -0.2, 'sd': 0.7, 'dt': 0.001, 'anzahl': 1000},
-    # Add more custom objects as needed
-]
-
-get_stock_details():
-    
-
-image_paths = generate_plots(objects)
-print(image_paths)
+    plt.clf()  # Clear the figure for the next plot
+    return temp_file_path
 
 @api.get("/foo")
 async def foo():
-    return [FileResponse(path) for path in image_paths][1]
+    get_history()
+    plots = []
+    for i, price_history in enumerate(history):
+        plot_image = generate_plot(price_history)
+        plots.append(plot_image)
+
+    return [FileResponse(plot, media_type='image/png') for plot in plots][0]
