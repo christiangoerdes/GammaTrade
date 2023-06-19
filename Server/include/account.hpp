@@ -30,6 +30,18 @@ class Account {
             _balance -= amount;
             return true;
         }
+        bool buy_stock(std::string stock, int quantity, int price) {
+            if(price > _balance) {
+                return false;
+            }
+            if(_stocks.find(stock) != _stocks.end()) {
+                _stocks[stock] += quantity;
+            }else{
+                _stocks[stock] = quantity;
+            }
+            _balance -= price;
+            return true;
+        }
 
         // Getter 
         std::string& get_name() {
@@ -41,7 +53,6 @@ class Account {
         double& get_balance() {
             return _balance;
         }
-
 
     private: 
         // Attributes 

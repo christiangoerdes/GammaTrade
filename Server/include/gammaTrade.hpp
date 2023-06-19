@@ -18,6 +18,11 @@ class GammaTrade {
 
         bool withdraw(std::string name, std::string password, int amount);
 
+        bool buy_stocks(std::string name, std::string password, std::string stock, int quantity);
+
+        bool sell_stocks(std::string name, std::string password, std::string stock, int quantity);
+
     private: 
         std::vector<Account> accounts; 
+        std::map<std::string, Stock> stocks; 
 };
