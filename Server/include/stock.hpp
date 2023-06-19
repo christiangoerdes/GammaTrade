@@ -9,9 +9,9 @@ class Stock {
 
         void update(const double dt);
 
-        std::list<double>& getPriceHistory() {
-            return _price_history;
-        }
+        const std::list<double>& getPriceHistory();
+
+        const double getPrice();
 
     private:
         const std::string _name;

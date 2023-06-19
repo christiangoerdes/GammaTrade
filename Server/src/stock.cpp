@@ -23,8 +23,10 @@ void Stock::update(const double dt) {
 
 }
 
-std::list<double>& Stock::getPriceHistory() {
-
+const std::list<double>& Stock::getPriceHistory() {
     return _price_history;
+}
 
+const double Stock::getPrice() {
+    return _price_history.back();
 }
