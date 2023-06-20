@@ -33,3 +33,9 @@ Zum Starten des Clients muss folgender Befehl im `/Client` Verzeichnis ausgefüh
 - Ibrahim Fakhir
 - Christian Goerdes
 - Sergej Zuev
+
+## Aufteilung und Umsetzung
+Das Projekt wurde so realisiert, dass Client und Server unabhängig von einander sind. Zum Entwickeln wurde dabei der Server in die Spiellogik und API aufgeteilt. Die drei Bestandteile wurden im wesentlichen wie folgt aufgeteilt:
+- Client - Ibo
+- API - Chrisi     
+- Spiellogik - Sergej
