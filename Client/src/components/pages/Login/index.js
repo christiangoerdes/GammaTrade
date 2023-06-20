@@ -1,10 +1,14 @@
 import "./index.css";
 import { useState, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../utils/AuthContext";
 import api from "../../../api/axiosConfig";
+import pages from "../../../utils/pages";
 
 export default function Login() {
     const { isLoggedIn, login, logout, logInName, setLogInName, logInPassword, setLogInPassword } = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const [hasAccount, setHasAccount] = useState(true);
     const [name, setName] = useState("");
@@ -29,6 +33,7 @@ export default function Login() {
                     setLogInPassword(password);
                     setErrorMessage(null);
                     login();
+                    navigate(pages.get('account').path);
                 }
                 else if (response.data.status === "wrong password") {
                     setErrorMessage("Wrong Password! Please try again.");

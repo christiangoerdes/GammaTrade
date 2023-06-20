@@ -1,15 +1,20 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../utils/AuthContext";
 import "./index.css";
 import api from "../../../api/axiosConfig";
+import pages from "../../../utils/pages";
 
 export default function Account() {
     const { isLoggedIn, login, logout, logInName, setLogInName, logInPassword, setLogInPassword } = useContext(AuthContext);
     
+    const navigate = useNavigate();
+
     const handleLogout = () => {
         setLogInName(null);
         setLogInPassword(null);
         logout();
+        navigate(pages.get('login').path);
     }
 
     return(
