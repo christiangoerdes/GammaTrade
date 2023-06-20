@@ -116,19 +116,16 @@ def get_history():
     stocks = g.get_stocks()
     for stock in stocks: 
         history.append(stock.getPriceHistory())
-    print(history)
     return history
 
 def generate_plot(price_history):
     time = np.arange(len(price_history))
-    print(time)
     plt.plot(time, price_history)
     plt.title('Price History')
     plt.xlabel('Time')
     plt.ylabel('Value')
     plt.grid(True)
 
-    print(time)
     # Save the plot image to a temporary file
     with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
         plt.savefig(temp_file, format='png')
@@ -145,4 +142,4 @@ async def foo():
         plot_image = generate_plot(price_history)
         plots.append(plot_image)
 
-    return [FileResponse(plot, media_type='image/png') for plot in plots][-1]
+    return [FileResponse(plot, media_type='image/png') for plot in plots][4]
