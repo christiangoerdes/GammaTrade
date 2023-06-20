@@ -104,6 +104,14 @@ public:
      */
     std::unordered_map<std::string, int> get_stocks_for(std::string name, std::string password);
 
+    /**
+     * @brief Retrieves the account balance for the specified account.
+     * @param name The name of the account holder.
+     * @param password The password for the account.
+     * @return A double which reprensents the account balance for an account
+     */
+    double get_balance_for(std::string name, std::string password);
+
 private:
     std::vector<Account> accounts;                      /**< The user accounts. */
     std::unordered_map<std::string, Stock> stocks;      /**< The available stocks. */
