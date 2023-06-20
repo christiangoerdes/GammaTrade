@@ -7,6 +7,7 @@
 #include <chrono>
 #include <mutex>
 #include <atomic>
+#include <condition_variable>
 
 /**
  * @brief Represents a trading platform with user accounts and stocks.
@@ -110,4 +111,5 @@ private:
     std::atomic<bool> stop{false};                      /**< Flag to stop the update thread. */
     std::mutex mtx;                                     /**< Mutex for thread synchronization. */
     std::thread price_thread;                           /**< Thread for stock price updates. */
+    std::condition_variable cv;
 };

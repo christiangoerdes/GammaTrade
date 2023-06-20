@@ -29,14 +29,13 @@ GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&
         {"BrightFutures Education", Stock("BrightFutures Education", 100.00, pow(1 - 0.02, 1.0/(365*24)) - 1, 0.04 / sqrt(365*24), _timespan, std::random_device{}())}
     };
 
-    price_thread.detach(); // Detach the thread
+    // price_thread.detach(); // Detach the thread
 
 }
+
 // Destructor
 GammaTrade::~GammaTrade() {
-    if (stop == false) {
-        stop_updates();
-    }
+    stop_updates();
     if (price_thread.joinable()) {
         price_thread.join();
     }
@@ -46,7 +45,11 @@ GammaTrade::~GammaTrade() {
  * @brief Stops the background thread for updating stock prices.
  */
 void GammaTrade::stop_updates() {
-    stop = true;
+    {
+        std::lock_guard<std::mutex> lock(mtx);
+        stop = true;
+    }
+    cv.notify_all();
 }
 
 
@@ -54,18 +57,25 @@ void GammaTrade::stop_updates() {
  * @brief Background thread function for updating stock prices at regular intervals.
  */
 void GammaTrade::update_prices(const int timespan) {
-
+    
     for (int i = 0; i < timespan; i++) { // Anfangshistorie erzeugen
         for (auto& [key, stock] : stocks) {
+            std::lock_guard<std::mutex> lock(mtx);
             stock.update();
         }
     }
 
-    while (!stop) {
-        std::this_thread::sleep_for(std::chrono::seconds(1));
-        std::lock_guard<std::mutex> lock(mtx);
+    while (true) {
+        {
+            std::unique_lock<std::mutex> lk(mtx);
+            if(cv.wait_for(lk, std::chrono::seconds(1), [this]() { return stop.load(); })) {
+                break; // If stop is true, break the loop
+            }
+        }
+        
         // Update the price here
         for (auto& [key, stock] : stocks) {
+            std::lock_guard<std::mutex> lock(mtx);
             stock.update();
         }
     }
@@ -107,7 +117,7 @@ int GammaTrade::login(std::string name, std::string password) {
         }
     }
     // return 2 which means account not found 
-    return 2; 
+    return 2;
 }
 
 /**

@@ -72,6 +72,6 @@ enable_testing()
 #----------------------------------------------#
 
 # Declare test program gammaTradeTest
-#add_executable(gammaTradeTest test/test.cpp src/gammaTrade.cpp)
-#target_link_libraries(gammaTradeTest GTest::gtest_main)
-#gtest_discover_tests(gammaTradeTest)
+add_executable(gammaTradeTest test/test.cpp src/gammaTrade.cpp src/stock.cpp src/account.cpp)
+target_link_libraries(gammaTradeTest GTest::gtest_main)
+gtest_discover_tests(gammaTradeTest)
