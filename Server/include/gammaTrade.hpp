@@ -8,39 +8,105 @@
 #include <mutex>
 #include <atomic>
 
-// GammaTrade class 
+/**
+ * @brief Represents a trading platform with user accounts and stocks.
+ */
 class GammaTrade {
-    public:
-        // Constructor 
-        GammaTrade(const int timespan);
+public:
+    /**
+     * @brief Constructs a GammaTrade object.
+     * @param timespan The timespan for stock price updates.
+     */
+    GammaTrade(const int timespan);
 
-        ~GammaTrade();
+    /**
+     * @brief Destructor for GammaTrade.
+     */
+    ~GammaTrade();
 
-        void update_prices();
+    /**
+     * @brief Updates the prices of all stocks.
+     */
+    void update_prices();
 
-        void stop_updates();
+    /**
+     * @brief Stops the stock price updates.
+     */
+    void stop_updates();
 
-        bool sign_up(std::string name, std::string password);
+    /**
+     * @brief Signs up a new user account.
+     * @param name The name of the account.
+     * @param password The password for the account.
+     * @return True if the sign-up was successful, false otherwise.
+     */
+    bool sign_up(std::string name, std::string password);
 
-        int login(std::string name, std::string password);
+    /**
+     * @brief Checks if the login is valid.
+     * @param name The name of the account.
+     * @param password The password for the account.
+     * @return 0 when the login is valid. 1 when the password is wrong. 2 otherwise
+     */
+    int login(std::string name, std::string password);
 
-        bool deposit(std::string name, std::string password, int amount);
+    /**
+     * @brief Deposits coins into a user account.
+     * @param name The name of the account.
+     * @param password The password for the account.
+     * @param amount The amount to deposit.
+     * @return True if the deposit was successful, false otherwise.
+     */
+    bool deposit(std::string name, std::string password, int amount);
 
-        bool withdraw(std::string name, std::string password, int amount);
+    /**
+     * @brief Withdraws coins from a user account.
+     * @param name The name of the account.
+     * @param password The password for the account.
+     * @param amount The amount to withdraw.
+     * @return True if the withdrawal was successful, false otherwise.
+     */
+    bool withdraw(std::string name, std::string password, int amount);
 
-        bool buy_stocks(std::string name, std::string password, std::string stock, int quantity);
+    /**
+     * @brief Buys stocks for a user account.
+     * @param name The name of the account.
+     * @param password The password for the account.
+     * @param stock The name of the stock to buy.
+     * @param quantity The quantity of stock to buy.
+     * @return True if the stock purchase was successful, false otherwise.
+     */
+    bool buy_stocks(std::string name, std::string password, std::string stock, int quantity);
 
-        bool sell_stocks(std::string name, std::string password, std::string stock, int quantity);
+    /**
+     * @brief Sells stocks from a user account.
+     * @param name The name of the account.
+     * @param password The password for the account.
+     * @param stock The name of the stock to sell.
+     * @param quantity The quantity of stock to sell.
+     * @return True if the stock sale was successful, false otherwise.
+     */
+    bool sell_stocks(std::string name, std::string password, std::string stock, int quantity);
 
-        std::vector<Stock> get_stocks(); 
+    /**
+     * @brief Retrieves the list of available stocks.
+     * @return A vector of Stock objects.
+     */
+    std::vector<Stock> get_stocks();
 
-        std::unordered_map<std::string, int> get_stocks_for(std::string name, std::string password); 
+    /**
+     * @brief Retrieves the stock holdings for a user account.
+     * @param name The name of the account.
+     * @param password The password for the account.
+     * @return A map of stock names to quantities.
+     */
+    std::unordered_map<std::string, int> get_stocks_for(std::string name, std::string password);
 
-    private: 
-        std::vector<Account> accounts; 
-        std::unordered_map<std::string, Stock> stocks;
-        const int _timespan;
-        std::atomic<bool> stop{false};  // flag to stop the thread when we're done
-        std::mutex mtx;
-        std::thread price_thread;
+private:
+    std::vector<Account> accounts;                      /**< The user accounts. */
+    std::unordered_map<std::string, Stock> stocks;      /**< The available stocks. */
+    const int _timespan;                                /**< The timespan for stock price updates. */
+    std::atomic<bool> stop{false};                      /**< Flag to stop the update thread. */
+    std::mutex mtx;                                     /**< Mutex for thread synchronization. */
+    std::thread price_thread;                           /**< Thread for stock price updates. */
 };
