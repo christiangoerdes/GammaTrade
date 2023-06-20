@@ -24,7 +24,7 @@ Um den Client zu nutzen, muss zuerst Node installiert werden.
 
 Anschließend muss im `/Client` Verzeichnis in der axiosConfig die baseURL auf den Server-host gestellt werden, den man nutzen möchte.
 
-Zum Installieren der Abhängikeiten muss folgender Befehl im `/Client` Verzeichnis ausgeführt werden:
+Zum Installieren der Abhängigkeiten muss folgender Befehl im `/Client` Verzeichnis ausgeführt werden:
 
     npm install
 
