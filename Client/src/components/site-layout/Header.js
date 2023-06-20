@@ -42,10 +42,10 @@ export default function Header() {
                     :
                         <li>
                             <Link 
-                                className={ pages.get("logout").path === pathname ? 'current-location' : '' }
-                                to={ pages.get("logout").path }
+                                className={ pages.get("account").path === pathname ? 'current-location' : '' }
+                                to={ pages.get("account").path }
                             >
-                                Logout
+                                Account
                             </Link>
                         </li>
                     }
