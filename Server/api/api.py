@@ -85,6 +85,11 @@ async def getStocks():
 async def getMyStocks(name: str, password: str):
     return {"stocks": get_my_stocks(name, password)}
 
+# Endpoint to get balance for user
+@api.get("/get-my-balance")
+async def getMyBalance(name: str, password: str):
+    return {"balance": g.get_balance_for(name, password)}
+
 
 # Get all stocks
 def get_stocks():

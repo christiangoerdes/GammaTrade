@@ -72,7 +72,7 @@ public:
      * @return A reference to the account's stock holdings.
      */
     std::unordered_map<std::string, int>& get_stocks();
-
+    
 private:
     std::string _name;                                      /**< The name of the account. */
     std::string _password;                                  /**< The password for the account. */

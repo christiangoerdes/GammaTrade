@@ -217,3 +217,17 @@ std::unordered_map<std::string, int> GammaTrade::get_stocks_for(std::string name
         }
     }
 }
+
+/**
+ * @brief Retrieves the account balance for the specified account.
+ * @param name The name of the account holder.
+ * @param password The password for the account.
+ * @return A double which reprensents the account balance for an account
+ */
+double GammaTrade::get_balance_for(std::string name, std::string password) {
+    for(Account& account : accounts) {
+        if(account.get_name() == name && account.get_password() == password) {
+            return account.get_balance();
+        }
+    }
+}
