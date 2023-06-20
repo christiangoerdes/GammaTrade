@@ -3,7 +3,20 @@ Eine Stock-Trading Plattform
 ## Projektdetails
 [Implementation Details](https://gitlab.informatik.uni-bonn.de/xx_best_oose_group_xx/projektgamma/-/blob/0cdbedb0b7108f8d738c584a4b776d6a5f09b266/docs/Implementation%20Details/implementation_details.drawio.png)
 
-## Server starten
+## Server mit Docker starten
+Um den Server mit Docker zu starten, muss man Docker auf seinem Gerät konfiguriert haben. Anschließend  müssen die folgenden Commands im `/Server` Verzeichnis ausgeführt werden:
+
+
+Container bauen:
+
+    sudo docker build -t gammatrade .
+
+Container starten:
+
+    sudo docker run --network host gammatrade
+
+
+## Server ohne Docker starten
 ### Build erstellen:
 Um einen Build zu erstellen, muss der folgende Command im `/Server` Verzeichnis des Projekts eingegeben werden:
     

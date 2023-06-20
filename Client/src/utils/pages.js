@@ -8,4 +8,6 @@ pages.set('shop-sell', { name: 'Shop Sell', path: '/shop-sell', anchorable: true
 
 pages.set('login', { name: 'Login', path: '/login', anchorable: true });
 
+pages.set('logout', { name: 'Logout', path: '/logout', anchorable: true });
+
 export default pages;
