@@ -1,6 +1,7 @@
 # Gamma Trade
-
-
+Eine Stock-Trading Plattform 
+## Projektdetails
+[Implementation Details](https://gitlab.informatik.uni-bonn.de/xx_best_oose_group_xx/projektgamma/-/blob/0cdbedb0b7108f8d738c584a4b776d6a5f09b266/docs/Implementation%20Details/implementation_details.drawio.png)
 
 ## Server starten
 ### Build erstellen:
