@@ -43,7 +43,7 @@ async def login(name: str, password: str):
     elif(stat == 1): 
         return {"status": "wrong password"}
     else:
-        return {"status": "User not found"}
+        return {"status": "user not found"}
 
 
 # deposit endpoint 
