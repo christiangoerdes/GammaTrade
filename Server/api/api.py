@@ -5,6 +5,7 @@ except ImportError as e:
     exit(1)
 
 import os
+import io
 from gammaTrade import GammaTrade
 from fastapi import FastAPI
 import uvicorn
@@ -14,6 +15,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from io import BytesIO
 import tempfile
+import base64
 
 # Initialize marketplace
 g = GammaTrade(100)
@@ -92,7 +94,7 @@ def get_stocks():
         stock_obj = {
             "name": stock.getName(),
             "price": stock.getPrice(),
-            "plot": FileResponse(generate_plot(stock.getPriceHistory()), media_type='image/png')
+            "plot": base64.b64encode(generate_plot(stock.getPriceHistory())).decode('utf-8')
         }
         stocks.append(stock_obj)
     return stocks
@@ -120,6 +122,7 @@ def get_history():
     return history
 
 # Generate a plot of the price history for each stock
+
 def generate_plot(price_history):
     time = np.arange(len(price_history))
     plt.plot(time, price_history)
@@ -127,11 +130,9 @@ def generate_plot(price_history):
     plt.xlabel('Time')
     plt.ylabel('Price')
     plt.grid(True)
-
-    # Save the plot image to a temporary file
-    with tempfile.NamedTemporaryFile(suffix='.png', delete=False) as temp_file:
-        plt.savefig(temp_file, format='png')
-        temp_file_path = temp_file.name
-
+    # Save the plot image to a byte stream
+    image_stream = io.BytesIO()
+    plt.savefig(image_stream, format='png')
+    image_stream.seek(0)  # Set the stream position to the beginning
     plt.clf()  # Clear the figure for the next plot
-    return temp_file_path
+    return image_stream.read()
