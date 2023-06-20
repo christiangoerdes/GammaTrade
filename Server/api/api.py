@@ -44,7 +44,7 @@ async def signUp(name: str, password: str):
 async def login(name: str, password: str):
     stat = g.login(name, password)
     if(stat == 0):
-        return {"status": "login successfull"}
+        return {"status": "login successful"}
     elif(stat == 1): 
         return {"status": "wrong password"}
     else:
