@@ -1,0 +1,22 @@
+.logout-headline {
+    background-color: var(--secondary-color);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.logout-headline h2 {
+    color: var(--primary-color);
+    text-align: center;
+    padding: 1.875rem 0 1.875rem 0;
+}
+
+.logout {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logout button {
+    width: 30rem;
+}
