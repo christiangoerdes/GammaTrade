@@ -3,25 +3,25 @@
 
 // Implementation for the GammaTrade class
 
-GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&GammaTrade::update_prices, this, 1) {
+GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&GammaTrade::update_prices, this) {
     // initialize all stocks
     stocks = {
-        {"DogeCoin", Stock("DogeCoin", 1000.00, 0.1, 0.2, _timespan)},
-        {"TechFlair Corp", Stock("TechFlair Corp", 200.00, 0.02, 0.06, _timespan)},
-        {"GreenWorld Energy", Stock("GreenWorld Energy", 75.00, -0.04, 0.1, _timespan)},
-        {"BlueChip Trust", Stock("BlueChip Trust", 500.00, -0.01, 0.02, _timespan)},
-        {"Quantum Computing Inc", Stock("Quantum Computing Inc", 50.00, 0.04, 0.08, _timespan)},
-        {"SafeHaven Insurance", Stock("SafeHaven Insurance", 300.00, 0.03, 0.04, _timespan)},
-        {"RedPanda Retail", Stock("RedPanda Retail", 100.00, -0.02, 0.06, _timespan)},
-        {"HyperAuto Cars", Stock("HyperAuto Cars", 200.00, 0.02, 0.04, _timespan)},
-        {"GoldenHorizon Investments", Stock("GoldenHorizon Investments", 450.00, 0.04, 0.06, _timespan)},
-        {"MediTech Health", Stock("MediTech Health", 150.00, -0.03, 0.05, _timespan)},
-        {"CrystalClear Water", Stock("CrystalClear Water", 80.00, 0.02, 0.04, _timespan)},
-        {"Falcon Aerospace", Stock("Falcon Aerospace", 120.00, 0.04, 0.08, _timespan)},
-        {"NanoInnovations Ltd", Stock("NanoInnovations Ltd", 70.00, -0.03, 0.06, _timespan)},
-        {"ArcticMining Co", Stock("ArcticMining Co", 250.00, 0.03, 0.05, _timespan)},
-        {"Evergreen Real Estate", Stock("Evergreen Real Estate", 350.00, 0.04, 0.06, _timespan)},
-        {"BrightFutures Education", Stock("BrightFutures Education", 100.00, -0.02, 0.04, _timespan)},
+        {"DogeCoin", Stock("DogeCoin", 1000.00, pow(1 + 0.1, 1.0/(365*24)) - 1, 0.2 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"TechFlair Corp", Stock("TechFlair Corp", 200.00, pow(1 + 0.02, 1.0/(365*24)) - 1, 0.06 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"GreenWorld Energy", Stock("GreenWorld Energy", 75.00, pow(1 - 0.04, 1.0/(365*24)) - 1, 0.1 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"BlueChip Trust", Stock("BlueChip Trust", 500.00, pow(1 - 0.01, 1.0/(365*24)) - 1, 0.02 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"Quantum Computing Inc", Stock("Quantum Computing Inc", 50.00, pow(1 + 0.04, 1.0/(365*24)) - 1, 0.08 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"SafeHaven Insurance", Stock("SafeHaven Insurance", 300.00, pow(1 + 0.03, 1.0/(365*24)) - 1, 0.04 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"RedPanda Retail", Stock("RedPanda Retail", 100.00, pow(1 - 0.02, 1.0/(365*24)) - 1, 0.06 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"HyperAuto Cars", Stock("HyperAuto Cars", 200.00, pow(1 + 0.02, 1.0/(365*24)) - 1, 0.04 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"GoldenHorizon Investments", Stock("GoldenHorizon Investments", 450.00, pow(1 + 0.04, 1.0/(365*24)) - 1, 0.06 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"MediTech Health", Stock("MediTech Health", 150.00, pow(1 - 0.03, 1.0/(365*24)) - 1, 0.05 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"CrystalClear Water", Stock("CrystalClear Water", 80.00, pow(1 + 0.02, 1.0/(365*24)) - 1, 0.04 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"Falcon Aerospace", Stock("Falcon Aerospace", 120.00, pow(1 + 0.04, 1.0/(365*24)) - 1, 0.08 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"NanoInnovations Ltd", Stock("NanoInnovations Ltd", 70.00, pow(1 - 0.03, 1.0/(365*24)) - 1, 0.06 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"ArcticMining Co", Stock("ArcticMining Co", 250.00, pow(1 + 0.03, 1.0/(365*24)) - 1, 0.05 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"Evergreen Real Estate", Stock("Evergreen Real Estate", 350.00, pow(1 + 0.04, 1.0/(365*24)) - 1, 0.06 / sqrt(365*24), _timespan, std::random_device{}())},
+        {"BrightFutures Education", Stock("BrightFutures Education", 100.00, pow(1 - 0.02, 1.0/(365*24)) - 1, 0.04 / sqrt(365*24), _timespan, std::random_device{}())}
     };
 
     price_thread.detach(); // Detach the thread
@@ -42,14 +42,14 @@ void GammaTrade::stop_updates() {
     stop = true;
 }
 
-void GammaTrade::update_prices(const int dt) {
+void GammaTrade::update_prices() {
 
     while (!stop) {
-        std::this_thread::sleep_for(std::chrono::seconds(dt));
+        std::this_thread::sleep_for(std::chrono::seconds(1));
         std::lock_guard<std::mutex> lock(mtx);
         // Update the price here
         for (auto& [key, stock] : stocks) {
-            stock.update(dt);
+            stock.update();
         }
     }
 }

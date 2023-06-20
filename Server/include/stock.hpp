@@ -6,25 +6,24 @@
 
 class Stock {
     public:
-        Stock(const std::string name, const double start, const double mean, const double stddev, const int timespan);
+        Stock(const std::string& name, const double start, const double mean, const double stddev, const int timespan, unsigned seed);
         Stock();
 
-        void update(const int dt);
+        void update();
 
-        const std::list<double>& getPriceHistory();
+        const std::list<double>& getPriceHistory() const;
 
-        const double getPrice();
-        const std::string getName();
+        const double getPrice() const;
+        const std::string getName() const;
         
     private:
-        const std::string _name;
-        const double _start;
-        const double _mean;
-        const double _stddev;
-        const int _timespan;
+        std::string _name;
+        double _start;
+        double _mean;
+        double _stddev;
+        int _timespan;
         std::list<double> _price_history;
 
         std::default_random_engine generator;
         std::normal_distribution<double> distribution;
-
 };
