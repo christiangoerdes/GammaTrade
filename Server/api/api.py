@@ -11,10 +11,10 @@ import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
 
-# initialize marketplace
+# Initialize marketplace
 g = GammaTrade(100)
 
-# initialize API
+# Initialize API
 api = FastAPI()
 
 # Enable access from other devices
@@ -27,14 +27,13 @@ api.add_middleware(
 )
 
 
-
-# sign up endpoint 
+# Sign up endpoint 
 @api.get("/sign-up")
 async def signUp(name: str, password: str):
     return {"success": g.sign_up(name, password)}
 
 
-# login endpoint 
+# Login endpoint 
 @api.get("/login")
 async def login(name: str, password: str):
     stat = g.login(name, password)
@@ -46,35 +45,36 @@ async def login(name: str, password: str):
         return {"status": "user not found"}
 
 
-# deposit endpoint 
+# Deposit endpoint 
 @api.get("/deposit")
 async def deposit(name: str, password: str, amount: float):
     return {"success": g.deposit(name, password, amount)}
 
 
-# withdraw endpoint 
+# Withdraw endpoint 
 @api.get("/withdraw")
 async def withdraw(name: str, password: str, amount: float):
     return {"success": g.withdraw(name, password, amount)}
 
 
-# endpoint to buy stocks
+# Endpoint to buy stocks
 @api.get("/buy-stocks")
 async def buyStocks(name: str, password: str, stock: str, quantity : int):
     return {"success": g.buy_stocks(name, password, stock, quantity)}
 
 
-# endpoint to sell stocks
+# Endpoint to sell stocks
 @api.get("/sell-stocks")
 async def sellStocks(name: str, password: str, stock: str, quantity : int):
     return {"success": g.sell_stocks(name, password, stock, quantity)}
 
 
-# endpoint to sell stocks
+# Endpoint to sell stocks
 @api.get("/get-stocks")
 async def getStocks():
     return {"stocks": get_stocks()}
 
+# Endpoint to get stocks for user
 @api.get("/get-my-stocks")
 async def getMyStocks(name: str, password: str):
     return {"stocks": get_my_stocks(name, password)}
@@ -110,7 +110,7 @@ import matplotlib.pyplot as plt
 from io import BytesIO
 import tempfile
 
-
+# Get the current price history of all stocks
 def get_history():
     history = []
     stocks = g.get_stocks()
@@ -118,6 +118,7 @@ def get_history():
         history.append(stock.getPriceHistory())
     return history
 
+# Generate a plot of the price history for each stock
 def generate_plot(price_history):
     time = np.arange(len(price_history))
     plt.plot(time, price_history)
@@ -134,7 +135,8 @@ def generate_plot(price_history):
     plt.clf()  # Clear the figure for the next plot
     return temp_file_path
 
-@api.get("/foo")
+# Endpoint to get the plots of the stocks 
+@api.get("/plots")
 async def foo():
     history = get_history()
     plots = []
