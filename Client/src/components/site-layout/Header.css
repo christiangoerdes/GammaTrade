@@ -15,6 +15,7 @@
 }
 
 .nav-bar-links a {
+    border-radius: 3rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -23,12 +24,11 @@
     padding-right: 1rem;
     padding-bottom: 1.5rem;
     text-transform: uppercase;
-    transition: backround-color 1.5s;
+    transition: background-color 0.5s;
 }
 
 .current-location,
 .nav-bar-links a:hover,
 .nav-bar-links a:focus {
     background-color: var(--special-color-2);
-    border-radius: 3.0rem;
 }
