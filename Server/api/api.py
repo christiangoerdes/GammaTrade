@@ -10,6 +10,10 @@ from fastapi import FastAPI
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
+import numpy as np
+import matplotlib.pyplot as plt
+from io import BytesIO
+import tempfile
 
 # Initialize marketplace
 g = GammaTrade(100)
@@ -80,35 +84,32 @@ async def getMyStocks(name: str, password: str):
     return {"stocks": get_my_stocks(name, password)}
 
 
+# Get all stocks
 def get_stocks():
     s = g.get_stocks()
     stocks = []
     for stock in s:
         stock_obj = {
             "name": stock.getName(),
-            "price": stock.getPrice()
+            "price": stock.getPrice(),
+            "plot": FileResponse(generate_plot(stock.getPriceHistory()), media_type='image/png')
         }
         stocks.append(stock_obj)
     return stocks
 
+# Get the stocks for an account 
 def get_my_stocks(name, password):
     s = g.get_stocks_for(name, password)
     stocks = []
     for stock in s:
         stock_obj = {
             "name": stock.getName(),
-            "price": stock.getPrice()
+            "price": stock.getPrice(),
+            "plot": FileResponse(generate_plot(stock.getPriceHistory()), media_type='image/png')
         }
         stocks.append(stock_obj)
     return stocks
 
-
-
-
-import numpy as np
-import matplotlib.pyplot as plt
-from io import BytesIO
-import tempfile
 
 # Get the current price history of all stocks
 def get_history():
@@ -134,14 +135,3 @@ def generate_plot(price_history):
 
     plt.clf()  # Clear the figure for the next plot
     return temp_file_path
-
-# Endpoint to get the plots of the stocks 
-@api.get("/plots")
-async def foo():
-    history = get_history()
-    plots = []
-    for price_history in history:
-        plot_image = generate_plot(price_history)
-        plots.append(plot_image)
-
-    return [FileResponse(plot, media_type='image/png') for plot in plots][4]
