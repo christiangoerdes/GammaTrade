@@ -1,0 +1,35 @@
+.login-headline {
+    background-color: var(--secondary-color);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.login-headline h2 {
+    color: var(--primary-color);
+    text-align: center;
+    padding: 1.875rem 0 1.875rem 0;
+}
+
+.login {
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.error-message {
+    margin-top: 1rem;
+    text-align: center;
+    color: red;
+}
+
+.has-account {
+    margin-top: 1rem;
+    text-align: center;
+}
+
+.has-account-click {
+    text-decoration: underline;
+    color: var(--special-color-1);
+    cursor: pointer;
+}
