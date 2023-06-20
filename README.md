@@ -15,7 +15,7 @@ Um die API zu starten, muss einer der beiden folgenden Commands im `/Server/api`
     python3 -m uvicorn api:api --port 8000  --reload
 
 ---
-## Client
+## Client starten
 
 Um den Client zu nutzen, muss zuerst Node installiert werden.
 
