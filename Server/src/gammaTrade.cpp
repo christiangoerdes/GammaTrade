@@ -3,6 +3,10 @@
 
 // Implementation for the GammaTrade class
 
+/**
+ * @class GammaTrade
+ * @brief Represents a trading system for buying and selling stocks.
+ */
 GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&GammaTrade::update_prices, this) {
     // initialize all stocks
     stocks = {
@@ -27,7 +31,7 @@ GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&
     price_thread.detach(); // Detach the thread
 
 }
-
+// Destructor
 GammaTrade::~GammaTrade() {
     if (stop == false) {
         stop_updates();
@@ -37,11 +41,17 @@ GammaTrade::~GammaTrade() {
     }
 }
 
-// Stops the price updating thread
+/**
+ * @brief Stops the background thread for updating stock prices.
+ */
 void GammaTrade::stop_updates() {
     stop = true;
 }
 
+
+/**
+ * @brief Background thread function for updating stock prices at regular intervals.
+ */
 void GammaTrade::update_prices() {
 
     while (!stop) {
@@ -54,7 +64,12 @@ void GammaTrade::update_prices() {
     }
 }
 
-// Create a new account
+/**
+ * @brief Registers a new account with the given name and password.
+ * @param name The name of the account holder.
+ * @param password The password for the account.
+ * @return True if the account was successfully created, false if an account with the same name already exists.
+ */
 bool GammaTrade::sign_up(std::string name, std::string password) {
     // Check if an account with this name already exists
     for(Account& account : accounts) {
@@ -68,7 +83,12 @@ bool GammaTrade::sign_up(std::string name, std::string password) {
     return true; 
 }
 
-// Check if login is valid
+/**
+ * @brief Attempts to log in with the provided name and password.
+ * @param name The name of the account holder.
+ * @param password The password for the account.
+ * @return 0 if the login is successful, 1 if the password is incorrect, 2 if the account is not found.
+ */
 int GammaTrade::login(std::string name, std::string password) {
     for(Account& account : accounts) {
         // If the login is possible return 0 
@@ -83,7 +103,13 @@ int GammaTrade::login(std::string name, std::string password) {
     return 2; 
 }
 
-// Deposit money into your account
+/**
+ * @brief Deposits the specified amount of money into the account.
+ * @param name The name of the account holder.
+ * @param password The password for the account.
+ * @param amount The amount of money to deposit.
+ * @return True if the deposit was successful, false if the account was not found.
+ */
 bool GammaTrade::deposit(std::string name, std::string password, int amount) {
     for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
@@ -93,7 +119,13 @@ bool GammaTrade::deposit(std::string name, std::string password, int amount) {
     return false;
 }
 
-// Withdraw money from your account 
+/**
+ * @brief Withdraws the specified amount of money from the account.
+ * @param name The name of the account holder.
+ * @param password The password for the account.
+ * @param amount The amount of money to withdraw.
+ * @return True if the withdrawal was successful, false if the account was not found or the balance was insufficient.
+ */
 bool GammaTrade::withdraw(std::string name, std::string password, int amount) {
     for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
@@ -103,6 +135,14 @@ bool GammaTrade::withdraw(std::string name, std::string password, int amount) {
     return false;
 }
 
+/**
+ * @brief Buys the specified quantity of stocks for the account.
+ * @param name The name of the account holder.
+ * @param password The password for the account.
+ * @param stock The name of the stock to buy.
+ * @param quantity The quantity of stocks to buy.
+ * @return True if the purchase was successful, false otherwise. 
+ */
 bool GammaTrade::buy_stocks(std::string name, std::string password, std::string stock, int quantity) {
     for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
@@ -115,6 +155,14 @@ bool GammaTrade::buy_stocks(std::string name, std::string password, std::string 
     return false;
 }
 
+/**
+ * @brief Sells the specified quantity of stocks from the account.
+ * @param name The name of the account holder.
+ * @param password The password for the account.
+ * @param stock The name of the stock to sell.
+ * @param quantity The quantity of stocks to sell.
+ * @return True if the sale was successful, false if the account or stock was not found, or the quantity exceeded the holdings.
+ */
 bool GammaTrade::sell_stocks(std::string name, std::string password, std::string stock, int quantity) {
     for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
@@ -127,7 +175,10 @@ bool GammaTrade::sell_stocks(std::string name, std::string password, std::string
     return false;
 }
 
-
+/**
+ * @brief Retrieves a vector containing information about all available stocks.
+ * @return A vector of Stock objects representing the available stocks.
+ */
 std::vector<Stock> GammaTrade::get_stocks() {
     std::vector<Stock> result;
     for (const auto& pair : stocks) {
@@ -136,6 +187,12 @@ std::vector<Stock> GammaTrade::get_stocks() {
     return result;
 }
 
+/**
+ * @brief Retrieves the stock holdings for the specified account.
+ * @param name The name of the account holder.
+ * @param password The password for the account.
+ * @return An unordered map where the keys are stock names and the values are the quantities held by the account.
+ */
 std::unordered_map<std::string, int> GammaTrade::get_stocks_for(std::string name, std::string password) {
     for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {

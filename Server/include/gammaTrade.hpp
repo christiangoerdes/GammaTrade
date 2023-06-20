@@ -46,12 +46,12 @@ public:
      * @brief Checks if the login is valid.
      * @param name The name of the account.
      * @param password The password for the account.
-     * @return 0 when the login is valid. 1 when the password is wrong. 2 otherwise
+     * @return  0 if the login is successful, 1 if the password is incorrect, 2 if the account is not found.
      */
     int login(std::string name, std::string password);
 
     /**
-     * @brief Deposits coins into a user account.
+     * @brief Deposits money into a user account.
      * @param name The name of the account.
      * @param password The password for the account.
      * @param amount The amount to deposit.
@@ -60,7 +60,7 @@ public:
     bool deposit(std::string name, std::string password, int amount);
 
     /**
-     * @brief Withdraws coins from a user account.
+     * @brief Withdraws money from a user account.
      * @param name The name of the account.
      * @param password The password for the account.
      * @param amount The amount to withdraw.
