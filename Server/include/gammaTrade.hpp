@@ -27,7 +27,8 @@ public:
     /**
      * @brief Updates the prices of all stocks.
      */
-    void update_prices();
+    void update_prices(const int timespan);
+
 
     /**
      * @brief Stops the stock price updates.
