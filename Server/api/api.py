@@ -124,7 +124,7 @@ def generate_plot(price_history):
     plt.plot(time, price_history)
     plt.title('Price History')
     plt.xlabel('Time')
-    plt.ylabel('Value')
+    plt.ylabel('Price')
     plt.grid(True)
 
     # Save the plot image to a temporary file
