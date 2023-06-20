@@ -1,5 +1,7 @@
 # Gamma Trade
 
+
+
 ## Server starten
 ### Build erstellen:
 Um einen Build zu erstellen, muss der folgende Command im `/Server` Verzeichnis des Projekts eingegeben werden:
@@ -39,3 +41,5 @@ Das Projekt wurde so realisiert, dass Client und Server unabhängig von einander
 - Client - Ibo
 - API - Chrisi     
 - Spiellogik - Sergej
+
+[Gantt Chart](https://gitlab.informatik.uni-bonn.de/xx_best_oose_group_xx/projektgamma/-/blob/2ffa367af6ab2fdee50094991a03205352c6efcb/docs/Gantt%20Chart/Gantt%20Chart.png)
