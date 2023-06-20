@@ -24,7 +24,7 @@ export default function Login() {
             .get(`/login?name=${name}&password=${password}`)
             .then((response) => {
                 console.log(response.data)
-                if (response.data.status === "login successfull") {
+                if (response.data.status === "login successful") {
                     setLogInName(name);
                     setLogInPassword(password);
                     setErrorMessage(null);
