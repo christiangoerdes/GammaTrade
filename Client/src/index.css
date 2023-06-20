@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+:root {
+    --primary-color: #062C30;
+    --secondary-color: #F5F5F5;
+    --special-color-1: #E2D784;
+    --special-color-2: #05595B;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 1rem;
+    -webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+    color: var(--secondary-color);
+    background-color: var(--primary-color);
+}
+
+h1 {
+    font-family: 'Inter', sans-serif;
+    font-size: 3rem;
+    color: var(--special-color-1);
+}
+
+a {
+    text-decoration: none;
+    color: var(--special-color-1);
+}
+
+.container {
+    max-width: 65rem;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+}
+
+.primary-button {
+    background-color: var(--special-color-1);
+    color: var(--special-color-2);
+    border-radius: 0.3rem;
+}
