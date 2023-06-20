@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>GammaTrade: Server/include/gammaTrade.hpp Source File</title>
+<title>GammaTrade: include/gammaTrade.hpp Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -62,7 +62,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_1a445cb237d74f7a5f8d11ec3b0585cc.html">Server</a></li><li class="navelem"><a class="el" href="dir_30ff900869959b17197a70705703ad2d.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -79,55 +79,61 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;atomic&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classGammaTrade.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGammaTrade.html">GammaTrade</a> {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classGammaTrade.html#a11a7f3163da8747e6727993127e20a4f">GammaTrade</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> timespan);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <a class="code" href="classGammaTrade.html#a7a6efef90f61296d309b1765ca3336f7">~GammaTrade</a>();</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGammaTrade.html#a90ee150548863465d4f6b88bcaa30bf7">update_prices</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGammaTrade.html#aa9f4e7c741def86e1fbe7164b73fa3b7">stop_updates</a>();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGammaTrade.html#ac7e856540b4ea48921465a2229d50765">sign_up</a>(std::string name, std::string password);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classGammaTrade.html#a94fe3633ef071a10d69f46064423dde1">login</a>(std::string name, std::string password);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGammaTrade.html#aca874f298cae924aeb8e51fc803a98da">deposit</a>(std::string name, std::string password, <span class="keywordtype">int</span> amount);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGammaTrade.html#a6824cbe491dbff523dd0d6e50e029ce0">withdraw</a>(std::string name, std::string password, <span class="keywordtype">int</span> amount);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGammaTrade.html#a6814366c121bc26e51142d2f5fd5b4ed">buy_stocks</a>(std::string name, std::string password, std::string stock, <span class="keywordtype">int</span> quantity);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGammaTrade.html#aa10e6df0540d156ae5a8bb382e473de0">sell_stocks</a>(std::string name, std::string password, std::string stock, <span class="keywordtype">int</span> quantity);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    std::vector&lt;Stock&gt; <a class="code" href="classGammaTrade.html#af78905146f6b2cfa514f87652c3c3400">get_stocks</a>();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    std::unordered_map&lt;std::string, int&gt; <a class="code" href="classGammaTrade.html#a6e8484e9bee971de9804e18e9f4f947d">get_stocks_for</a>(std::string name, std::string password);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    std::vector&lt;Account&gt; accounts;                      </div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    std::unordered_map&lt;std::string, Stock&gt; stocks;      </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> _timespan;                                </div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    std::atomic&lt;bool&gt; stop{<span class="keyword">false</span>};                      </div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    std::mutex mtx;                                     </div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    std::thread price_thread;                           </div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;};</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;condition_variable&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classGammaTrade.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="classGammaTrade.html">GammaTrade</a> {</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <a class="code" href="classGammaTrade.html#a11a7f3163da8747e6727993127e20a4f">GammaTrade</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> timespan);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classGammaTrade.html#a7a6efef90f61296d309b1765ca3336f7">~GammaTrade</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGammaTrade.html#a657d4c45f088ea86a1c9eb0b526bab87">update_prices</a>(<span class="keyword">const</span> <span class="keywordtype">int</span> timespan);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classGammaTrade.html#aa9f4e7c741def86e1fbe7164b73fa3b7">stop_updates</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGammaTrade.html#ac7e856540b4ea48921465a2229d50765">sign_up</a>(std::string name, std::string password);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">int</span> <a class="code" href="classGammaTrade.html#a94fe3633ef071a10d69f46064423dde1">login</a>(std::string name, std::string password);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGammaTrade.html#aca874f298cae924aeb8e51fc803a98da">deposit</a>(std::string name, std::string password, <span class="keywordtype">int</span> amount);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGammaTrade.html#a6824cbe491dbff523dd0d6e50e029ce0">withdraw</a>(std::string name, std::string password, <span class="keywordtype">int</span> amount);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGammaTrade.html#a6814366c121bc26e51142d2f5fd5b4ed">buy_stocks</a>(std::string name, std::string password, std::string stock, <span class="keywordtype">int</span> quantity);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="classGammaTrade.html#aa10e6df0540d156ae5a8bb382e473de0">sell_stocks</a>(std::string name, std::string password, std::string stock, <span class="keywordtype">int</span> quantity);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    std::vector&lt;Stock&gt; <a class="code" href="classGammaTrade.html#af78905146f6b2cfa514f87652c3c3400">get_stocks</a>();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    std::unordered_map&lt;std::string, int&gt; <a class="code" href="classGammaTrade.html#a6e8484e9bee971de9804e18e9f4f947d">get_stocks_for</a>(std::string name, std::string password);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classGammaTrade.html#aa23f1213cfe9a4a17ac4fb44970cfbba">get_balance_for</a>(std::string name, std::string password);</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    std::vector&lt;Account&gt; accounts;                      </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    std::unordered_map&lt;std::string, Stock&gt; stocks;      </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">int</span> _timespan;                                </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    std::atomic&lt;bool&gt; stop{<span class="keyword">false</span>};                      </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    std::mutex mtx;                                     </div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    std::thread price_thread;                           </div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    std::condition_variable cv;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;};</div>
 <div class="ttc" id="aaccount_8hpp_html"><div class="ttname"><a href="account_8hpp.html">account.hpp</a></div></div>
-<div class="ttc" id="aclassGammaTrade_html"><div class="ttname"><a href="classGammaTrade.html">GammaTrade</a></div><div class="ttdoc">Represents a trading platform with user accounts and stocks.</div><div class="ttdef"><b>Definition:</b> gammaTrade.hpp:14</div></div>
+<div class="ttc" id="aclassGammaTrade_html"><div class="ttname"><a href="classGammaTrade.html">GammaTrade</a></div><div class="ttdoc">Represents a trading platform with user accounts and stocks.</div><div class="ttdef"><b>Definition:</b> gammaTrade.hpp:15</div></div>
 <div class="ttc" id="aclassGammaTrade_html_a11a7f3163da8747e6727993127e20a4f"><div class="ttname"><a href="classGammaTrade.html#a11a7f3163da8747e6727993127e20a4f">GammaTrade::GammaTrade</a></div><div class="ttdeci">GammaTrade(const int timespan)</div><div class="ttdoc">Constructs a GammaTrade object.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:10</div></div>
-<div class="ttc" id="aclassGammaTrade_html_a6814366c121bc26e51142d2f5fd5b4ed"><div class="ttname"><a href="classGammaTrade.html#a6814366c121bc26e51142d2f5fd5b4ed">GammaTrade::buy_stocks</a></div><div class="ttdeci">bool buy_stocks(std::string name, std::string password, std::string stock, int quantity)</div><div class="ttdoc">Buys stocks for a user account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:146</div></div>
-<div class="ttc" id="aclassGammaTrade_html_a6824cbe491dbff523dd0d6e50e029ce0"><div class="ttname"><a href="classGammaTrade.html#a6824cbe491dbff523dd0d6e50e029ce0">GammaTrade::withdraw</a></div><div class="ttdeci">bool withdraw(std::string name, std::string password, int amount)</div><div class="ttdoc">Withdraws money from a user account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:129</div></div>
-<div class="ttc" id="aclassGammaTrade_html_a6e8484e9bee971de9804e18e9f4f947d"><div class="ttname"><a href="classGammaTrade.html#a6e8484e9bee971de9804e18e9f4f947d">GammaTrade::get_stocks_for</a></div><div class="ttdeci">std::unordered_map&lt; std::string, int &gt; get_stocks_for(std::string name, std::string password)</div><div class="ttdoc">Retrieves the stock holdings for a user account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:196</div></div>
-<div class="ttc" id="aclassGammaTrade_html_a7a6efef90f61296d309b1765ca3336f7"><div class="ttname"><a href="classGammaTrade.html#a7a6efef90f61296d309b1765ca3336f7">GammaTrade::~GammaTrade</a></div><div class="ttdeci">~GammaTrade()</div><div class="ttdoc">Destructor for GammaTrade.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:35</div></div>
-<div class="ttc" id="aclassGammaTrade_html_a90ee150548863465d4f6b88bcaa30bf7"><div class="ttname"><a href="classGammaTrade.html#a90ee150548863465d4f6b88bcaa30bf7">GammaTrade::update_prices</a></div><div class="ttdeci">void update_prices()</div><div class="ttdoc">Updates the prices of all stocks.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:55</div></div>
-<div class="ttc" id="aclassGammaTrade_html_a94fe3633ef071a10d69f46064423dde1"><div class="ttname"><a href="classGammaTrade.html#a94fe3633ef071a10d69f46064423dde1">GammaTrade::login</a></div><div class="ttdeci">int login(std::string name, std::string password)</div><div class="ttdoc">Checks if the login is valid.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:92</div></div>
-<div class="ttc" id="aclassGammaTrade_html_aa10e6df0540d156ae5a8bb382e473de0"><div class="ttname"><a href="classGammaTrade.html#aa10e6df0540d156ae5a8bb382e473de0">GammaTrade::sell_stocks</a></div><div class="ttdeci">bool sell_stocks(std::string name, std::string password, std::string stock, int quantity)</div><div class="ttdoc">Sells stocks from a user account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:166</div></div>
+<div class="ttc" id="aclassGammaTrade_html_a657d4c45f088ea86a1c9eb0b526bab87"><div class="ttname"><a href="classGammaTrade.html#a657d4c45f088ea86a1c9eb0b526bab87">GammaTrade::update_prices</a></div><div class="ttdeci">void update_prices(const int timespan)</div><div class="ttdoc">Updates the prices of all stocks.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:59</div></div>
+<div class="ttc" id="aclassGammaTrade_html_a6814366c121bc26e51142d2f5fd5b4ed"><div class="ttname"><a href="classGammaTrade.html#a6814366c121bc26e51142d2f5fd5b4ed">GammaTrade::buy_stocks</a></div><div class="ttdeci">bool buy_stocks(std::string name, std::string password, std::string stock, int quantity)</div><div class="ttdoc">Buys stocks for a user account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:163</div></div>
+<div class="ttc" id="aclassGammaTrade_html_a6824cbe491dbff523dd0d6e50e029ce0"><div class="ttname"><a href="classGammaTrade.html#a6824cbe491dbff523dd0d6e50e029ce0">GammaTrade::withdraw</a></div><div class="ttdeci">bool withdraw(std::string name, std::string password, int amount)</div><div class="ttdoc">Withdraws money from a user account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:146</div></div>
+<div class="ttc" id="aclassGammaTrade_html_a6e8484e9bee971de9804e18e9f4f947d"><div class="ttname"><a href="classGammaTrade.html#a6e8484e9bee971de9804e18e9f4f947d">GammaTrade::get_stocks_for</a></div><div class="ttdeci">std::unordered_map&lt; std::string, int &gt; get_stocks_for(std::string name, std::string password)</div><div class="ttdoc">Retrieves the stock holdings for a user account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:213</div></div>
+<div class="ttc" id="aclassGammaTrade_html_a7a6efef90f61296d309b1765ca3336f7"><div class="ttname"><a href="classGammaTrade.html#a7a6efef90f61296d309b1765ca3336f7">GammaTrade::~GammaTrade</a></div><div class="ttdeci">~GammaTrade()</div><div class="ttdoc">Destructor for GammaTrade.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:37</div></div>
+<div class="ttc" id="aclassGammaTrade_html_a94fe3633ef071a10d69f46064423dde1"><div class="ttname"><a href="classGammaTrade.html#a94fe3633ef071a10d69f46064423dde1">GammaTrade::login</a></div><div class="ttdeci">int login(std::string name, std::string password)</div><div class="ttdoc">Checks if the login is valid.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:109</div></div>
+<div class="ttc" id="aclassGammaTrade_html_aa10e6df0540d156ae5a8bb382e473de0"><div class="ttname"><a href="classGammaTrade.html#aa10e6df0540d156ae5a8bb382e473de0">GammaTrade::sell_stocks</a></div><div class="ttdeci">bool sell_stocks(std::string name, std::string password, std::string stock, int quantity)</div><div class="ttdoc">Sells stocks from a user account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:183</div></div>
+<div class="ttc" id="aclassGammaTrade_html_aa23f1213cfe9a4a17ac4fb44970cfbba"><div class="ttname"><a href="classGammaTrade.html#aa23f1213cfe9a4a17ac4fb44970cfbba">GammaTrade::get_balance_for</a></div><div class="ttdeci">double get_balance_for(std::string name, std::string password)</div><div class="ttdoc">Retrieves the account balance for the specified account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:227</div></div>
 <div class="ttc" id="aclassGammaTrade_html_aa9f4e7c741def86e1fbe7164b73fa3b7"><div class="ttname"><a href="classGammaTrade.html#aa9f4e7c741def86e1fbe7164b73fa3b7">GammaTrade::stop_updates</a></div><div class="ttdeci">void stop_updates()</div><div class="ttdoc">Stops the stock price updates.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:47</div></div>
-<div class="ttc" id="aclassGammaTrade_html_ac7e856540b4ea48921465a2229d50765"><div class="ttname"><a href="classGammaTrade.html#ac7e856540b4ea48921465a2229d50765">GammaTrade::sign_up</a></div><div class="ttdeci">bool sign_up(std::string name, std::string password)</div><div class="ttdoc">Signs up a new user account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:73</div></div>
-<div class="ttc" id="aclassGammaTrade_html_aca874f298cae924aeb8e51fc803a98da"><div class="ttname"><a href="classGammaTrade.html#aca874f298cae924aeb8e51fc803a98da">GammaTrade::deposit</a></div><div class="ttdeci">bool deposit(std::string name, std::string password, int amount)</div><div class="ttdoc">Deposits money into a user account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:113</div></div>
-<div class="ttc" id="aclassGammaTrade_html_af78905146f6b2cfa514f87652c3c3400"><div class="ttname"><a href="classGammaTrade.html#af78905146f6b2cfa514f87652c3c3400">GammaTrade::get_stocks</a></div><div class="ttdeci">std::vector&lt; Stock &gt; get_stocks()</div><div class="ttdoc">Retrieves the list of available stocks.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:182</div></div>
+<div class="ttc" id="aclassGammaTrade_html_ac7e856540b4ea48921465a2229d50765"><div class="ttname"><a href="classGammaTrade.html#ac7e856540b4ea48921465a2229d50765">GammaTrade::sign_up</a></div><div class="ttdeci">bool sign_up(std::string name, std::string password)</div><div class="ttdoc">Signs up a new user account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:90</div></div>
+<div class="ttc" id="aclassGammaTrade_html_aca874f298cae924aeb8e51fc803a98da"><div class="ttname"><a href="classGammaTrade.html#aca874f298cae924aeb8e51fc803a98da">GammaTrade::deposit</a></div><div class="ttdeci">bool deposit(std::string name, std::string password, int amount)</div><div class="ttdoc">Deposits money into a user account.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:130</div></div>
+<div class="ttc" id="aclassGammaTrade_html_af78905146f6b2cfa514f87652c3c3400"><div class="ttname"><a href="classGammaTrade.html#af78905146f6b2cfa514f87652c3c3400">GammaTrade::get_stocks</a></div><div class="ttdeci">std::vector&lt; Stock &gt; get_stocks()</div><div class="ttdoc">Retrieves the list of available stocks.</div><div class="ttdef"><b>Definition:</b> gammaTrade.cpp:199</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

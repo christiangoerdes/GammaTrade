@@ -83,9 +83,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7a6efef90f61296d309b1765ca3336f7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGammaTrade.html#a7a6efef90f61296d309b1765ca3336f7">~GammaTrade</a> ()</td></tr>
 <tr class="memdesc:a7a6efef90f61296d309b1765ca3336f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for <a class="el" href="classGammaTrade.html" title="Represents a trading platform with user accounts and stocks.">GammaTrade</a>.  <a href="classGammaTrade.html#a7a6efef90f61296d309b1765ca3336f7">More...</a><br /></td></tr>
 <tr class="separator:a7a6efef90f61296d309b1765ca3336f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90ee150548863465d4f6b88bcaa30bf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGammaTrade.html#a90ee150548863465d4f6b88bcaa30bf7">update_prices</a> ()</td></tr>
-<tr class="memdesc:a90ee150548863465d4f6b88bcaa30bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the prices of all stocks.  <a href="classGammaTrade.html#a90ee150548863465d4f6b88bcaa30bf7">More...</a><br /></td></tr>
-<tr class="separator:a90ee150548863465d4f6b88bcaa30bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a657d4c45f088ea86a1c9eb0b526bab87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGammaTrade.html#a657d4c45f088ea86a1c9eb0b526bab87">update_prices</a> (const int timespan)</td></tr>
+<tr class="memdesc:a657d4c45f088ea86a1c9eb0b526bab87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the prices of all stocks.  <a href="classGammaTrade.html#a657d4c45f088ea86a1c9eb0b526bab87">More...</a><br /></td></tr>
+<tr class="separator:a657d4c45f088ea86a1c9eb0b526bab87"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa9f4e7c741def86e1fbe7164b73fa3b7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGammaTrade.html#aa9f4e7c741def86e1fbe7164b73fa3b7">stop_updates</a> ()</td></tr>
 <tr class="memdesc:aa9f4e7c741def86e1fbe7164b73fa3b7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops the stock price updates.  <a href="classGammaTrade.html#aa9f4e7c741def86e1fbe7164b73fa3b7">More...</a><br /></td></tr>
 <tr class="separator:aa9f4e7c741def86e1fbe7164b73fa3b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,6 +113,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a6e8484e9bee971de9804e18e9f4f947d"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; std::string, int &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGammaTrade.html#a6e8484e9bee971de9804e18e9f4f947d">get_stocks_for</a> (std::string name, std::string password)</td></tr>
 <tr class="memdesc:a6e8484e9bee971de9804e18e9f4f947d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the stock holdings for a user account.  <a href="classGammaTrade.html#a6e8484e9bee971de9804e18e9f4f947d">More...</a><br /></td></tr>
 <tr class="separator:a6e8484e9bee971de9804e18e9f4f947d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa23f1213cfe9a4a17ac4fb44970cfbba"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGammaTrade.html#aa23f1213cfe9a4a17ac4fb44970cfbba">get_balance_for</a> (std::string name, std::string password)</td></tr>
+<tr class="memdesc:aa23f1213cfe9a4a17ac4fb44970cfbba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the account balance for the specified account.  <a href="classGammaTrade.html#aa23f1213cfe9a4a17ac4fb44970cfbba">More...</a><br /></td></tr>
+<tr class="separator:aa23f1213cfe9a4a17ac4fb44970cfbba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a trading platform with user accounts and stocks. </p>
@@ -279,6 +282,44 @@ Public Member Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the deposit was successful, false if the account was not found. </dd></dl>
+
+</div>
+</div>
+<a id="aa23f1213cfe9a4a17ac4fb44970cfbba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa23f1213cfe9a4a17ac4fb44970cfbba">&#9670;&nbsp;</a></span>get_balance_for()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double GammaTrade::get_balance_for </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>password</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Retrieves the account balance for the specified account. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The name of the account holder. </td></tr>
+    <tr><td class="paramname">password</td><td>The password for the account. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A double which reprensents the account balance for an account </dd></dl>
 
 </div>
 </div>
@@ -529,8 +570,8 @@ A vector of <a class="el" href="classStock.html" title="Represents a stock with 
 
 </div>
 </div>
-<a id="a90ee150548863465d4f6b88bcaa30bf7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a90ee150548863465d4f6b88bcaa30bf7">&#9670;&nbsp;</a></span>update_prices()</h2>
+<a id="a657d4c45f088ea86a1c9eb0b526bab87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a657d4c45f088ea86a1c9eb0b526bab87">&#9670;&nbsp;</a></span>update_prices()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -538,7 +579,8 @@ A vector of <a class="el" href="classStock.html" title="Represents a stock with 
         <tr>
           <td class="memname">void GammaTrade::update_prices </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>timespan</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
@@ -605,8 +647,8 @@ A vector of <a class="el" href="classStock.html" title="Represents a stock with 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>Server/include/<a class="el" href="gammaTrade_8hpp_source.html">gammaTrade.hpp</a></li>
-<li>Server/src/<a class="el" href="gammaTrade_8cpp.html">gammaTrade.cpp</a></li>
+<li>include/<a class="el" href="gammaTrade_8hpp_source.html">gammaTrade.hpp</a></li>
+<li>src/<a class="el" href="gammaTrade_8cpp.html">gammaTrade.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
