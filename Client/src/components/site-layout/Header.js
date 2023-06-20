@@ -1,11 +1,15 @@
 import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 import pages from "../../utils/pages";
+import { useContext } from "react";
+import { AuthContext } from "../../utils/AuthContext";
 import './Header.css';
 
 const navLinks = Array.from(pages.values()).filter(page => page.anchorable);
 
 export default function Header() {
+    const { isLoggedIn, login, logout, logInName, setLogInName, logInPassword, setLogInPassword } = useContext(AuthContext);
+    
     const { pathname } = useLocation();
 
     return(
@@ -25,6 +29,26 @@ export default function Header() {
                             </Link>
                         </li>
                     )}
+                    {!isLoggedIn 
+                    ?
+                        <li>
+                            <Link 
+                                className={ pages.get("login").path === pathname ? 'current-location' : '' }
+                                to={ pages.get("login").path }
+                            >
+                                Login
+                            </Link>
+                        </li>
+                    :
+                        <li>
+                            <Link 
+                                className={ pages.get("logout").path === pathname ? 'current-location' : '' }
+                                to={ pages.get("logout").path }
+                            >
+                                Logout
+                            </Link>
+                        </li>
+                    }
                 </ul>
             </nav>
         </header>
