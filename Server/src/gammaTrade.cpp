@@ -3,7 +3,8 @@
 
 // Implementation for the GammaTrade class
 
-GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&GammaTrade::update_prices, this) {
+GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&GammaTrade::update_prices, this, timespan) {
+
     // initialize all stocks
     stocks = {
         {"DogeCoin", Stock("DogeCoin", 1000.00, pow(1 + 0.1, 1.0/(365*24)) - 1, 0.2 / sqrt(365*24), _timespan, std::random_device{}())},
@@ -42,7 +43,13 @@ void GammaTrade::stop_updates() {
     stop = true;
 }
 
-void GammaTrade::update_prices() {
+void GammaTrade::update_prices(const int timespan) {
+
+    for (int i = 0; i < timespan; i++) { // Anfangshistorie erzeugen
+        for (auto& [key, stock] : stocks) {
+            stock.update();
+        }
+    }
 
     while (!stop) {
         std::this_thread::sleep_for(std::chrono::seconds(1));

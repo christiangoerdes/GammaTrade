@@ -16,7 +16,7 @@ class GammaTrade {
 
         ~GammaTrade();
 
-        void update_prices();
+        void update_prices(const int timespan);
 
         void stop_updates();
 
