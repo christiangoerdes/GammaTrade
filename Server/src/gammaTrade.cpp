@@ -231,3 +231,17 @@ double GammaTrade::get_balance_for(std::string name, std::string password) {
         }
     }
 }
+
+/**
+ * @brief Retrieves the account for the given name and password.
+ * @param name The name of the account holder.
+ * @param password The password for the account.
+ * @return The account for the given name and password 
+ */
+Account GammaTrade::get_account(std::string name, std::string password) {
+    for(Account& account : accounts) {
+        if(account.get_name() == name && account.get_password() == password) {
+            return account;
+        }
+    }
+}

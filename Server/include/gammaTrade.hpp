@@ -112,6 +112,14 @@ public:
      */
     double get_balance_for(std::string name, std::string password);
 
+   /**
+     * @brief Retrieves the account for the given name and password.
+     * @param name The name of the account holder.
+     * @param password The password for the account.
+     * @return The account for the given name and password 
+     */
+    Account get_account(std::string name, std::string password);
+
 private:
     std::vector<Account> accounts;                      /**< The user accounts. */
     std::unordered_map<std::string, Stock> stocks;      /**< The available stocks. */
