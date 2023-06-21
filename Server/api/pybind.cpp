@@ -18,7 +18,7 @@ PYBIND11_MODULE(gammaTrade, m) {
         .def("get_stocks", &Account::get_stocks);
     // Map the Stock class
     py::class_<Stock>(m, "Stock")
-        .def(py::init<const std::string&, const double, const double, const double, const int, unsigned>())
+        .def(py::init<const std::string&, const double, const double, const double, unsigned>())
         .def(py::init<>())
         .def("update", &Stock::update)
         .def("getPriceHistory", &Stock::getPriceHistory)
