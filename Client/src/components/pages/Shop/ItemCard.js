@@ -16,13 +16,29 @@ export default function ItemCard(props) {
         navigate(pages.get('shop-item').path, {state: info})
     }
 
+    const getData = () => {
+        api
+        .get(`/get-stock-logged-out?stock=${props.stock.toLowerCase()}`)
+        .then((response) => {
+            setPrice(response.data.stock.price);
+        })
+    }
+
     useEffect(() => {
+        const interval = setInterval(getData, 1000);
+
+        return () => {
+            clearInterval(interval);
+        }
+    })
+
+    /* useEffect(() => {
         api
         .get(`/get-stock-logged-out?stock=${props.stock}`)
         .then((response) => {
             setPrice(response.data.stock.price);
         })
-    }, [])
+    }, []) */
 
     return(
         <div className="item-card" onClick={goToItem}>
