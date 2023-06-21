@@ -116,7 +116,7 @@ def get_stock_lo(stock):
     s = get_all_stocks()
     for st in s:
         if st["name"] == stock:
-            return stock
+            return st
     return None
 
 
@@ -125,7 +125,7 @@ def get_stock(name, password, stock):
     s = get_stocks(name, password)
     for st in s:
         if st["name"] == stock:
-            return stock
+            return st
     return None
 
 # Get all stocks
