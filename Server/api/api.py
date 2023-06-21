@@ -114,8 +114,8 @@ async def getMyStockValue(name: str, password: str):
 # Get one stock 
 def get_stock_lo(stock):
     s = get_all_stocks()
-    for stock in s:
-        if stock["name"] == stock:
+    for st in s:
+        if st["name"] == stock:
             return stock
     return None
 
@@ -123,8 +123,8 @@ def get_stock_lo(stock):
 # Get one stock 
 def get_stock(name, password, stock):
     s = get_stocks(name, password)
-    for stock in s:
-        if stock["name"] == stock:
+    for st in s:
+        if st["name"] == stock:
             return stock
     return None
 
