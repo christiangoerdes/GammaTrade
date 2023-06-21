@@ -75,12 +75,12 @@ async def sellStocks(name: str, password: str, stock: str, quantity : int):
     return {"success": g.sell_stocks(name, password, stock, quantity)}
 
 
-# Endpoint to sell stocks
+# Endpoint to get stocks
 @api.get("/get-stocks")
 async def getStocks(name: str, password: str):
     return {"stocks": get_stocks(name, password)}
 
-# Endpoint to sell stocks
+# Endpoint to get stocks without login
 @api.get("/get-stocks-logged-out")
 async def getStocksLoggedOut():
     return {"stocks": get_all_stocks()}
