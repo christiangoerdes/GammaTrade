@@ -7,10 +7,7 @@
  * @class GammaTrade
  * @brief Represents a trading system for buying and selling stocks.
  */
-GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&GammaTrade::update_prices, this, timespan) {
-
-    // initialize all stocks
-    stocks = {
+GammaTrade::GammaTrade(const int timespan) : stocks({
         {"DogeCoin", Stock("DogeCoin", 1000.00, pow(1 + 0.1, 1.0/(365*24)) - 1, 0.2 / sqrt(365*24), _timespan, std::random_device{}())},
         {"TechFlair Corp", Stock("TechFlair Corp", 200.00, pow(1 + 0.02, 1.0/(365*24)) - 1, 0.06 / sqrt(365*24), _timespan, std::random_device{}())},
         {"GreenWorld Energy", Stock("GreenWorld Energy", 75.00, pow(1 - 0.04, 1.0/(365*24)) - 1, 0.1 / sqrt(365*24), _timespan, std::random_device{}())},
@@ -27,7 +24,7 @@ GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&
         {"ArcticMining Co", Stock("ArcticMining Co", 250.00, pow(1 + 0.03, 1.0/(365*24)) - 1, 0.05 / sqrt(365*24), _timespan, std::random_device{}())},
         {"Evergreen Real Estate", Stock("Evergreen Real Estate", 350.00, pow(1 + 0.04, 1.0/(365*24)) - 1, 0.06 / sqrt(365*24), _timespan, std::random_device{}())},
         {"BrightFutures Education", Stock("BrightFutures Education", 100.00, pow(1 - 0.02, 1.0/(365*24)) - 1, 0.04 / sqrt(365*24), _timespan, std::random_device{}())}
-    };
+    }), _timespan(timespan), price_thread(&GammaTrade::update_prices, this, timespan) {
 
 }
 

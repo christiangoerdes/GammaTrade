@@ -205,6 +205,7 @@ def generate_plot(price_history):
     plt.xlabel('Time (in seconds)')
     plt.ylabel('Price')
     plt.ylim(y_lower, y_upper)  # Set the limits here
+    plt.xlim(-len(time),5)
     plt.grid(True)
     # Save the plot image to a byte stream
     image_stream = io.BytesIO()
