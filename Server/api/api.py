@@ -107,12 +107,13 @@ def get_stocks():
 # Get the stocks for an account 
 def get_my_stocks(name, password):
     s = g.get_stocks_for(name, password)
+    acc = g.get_account(name, password)
     stocks = []
     for stock in s:
         stock_obj = {
             "name": stock.getName(),
             "price": stock.getPrice(),
-            "amount": 
+            "amount": acc.get_stocks()[stock.getName()],
             "plot": base64.b64encode(generate_plot(stock.getPriceHistory())).decode('utf-8')
         }
         stocks.append(stock_obj)
