@@ -97,10 +97,10 @@ public:
     std::vector<Stock> get_stocks();
 
     /**
-     * @brief Retrieves the stock holdings for a user account.
+     * @brief Retrieves the stocks for a user account.
      * @param name The name of the account.
      * @param password The password for the account.
-     * @return A map of stock names to quantities.
+     * @return A vector of Stock objects held by the account.
      */
     std::vector<Stock> get_stocks_for(std::string name, std::string password);
 

@@ -205,10 +205,10 @@ std::vector<Stock> GammaTrade::get_stocks() {
 }
 
 /**
- * @brief Retrieves the stock holdings for the specified account.
+ * @brief Retrieves the stocks for the specified account.
  * @param name The name of the account holder.
  * @param password The password for the account.
- * @return An unordered map where the keys are stock names and the values are the quantities held by the account.
+ * @return A vector of Stock objects held by the account.
  */
 std::vector<Stock> GammaTrade::get_stocks_for(std::string name, std::string password) {
     for(Account& account : accounts) {
