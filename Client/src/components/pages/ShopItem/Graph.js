@@ -17,7 +17,7 @@ export default function Graph() {
     }
 
     useEffect(() => {
-        const interval = setInterval(wholeImage, 1500);
+        const interval = setInterval(wholeImage, 3000);
 
         return () => {
             clearInterval(interval);
