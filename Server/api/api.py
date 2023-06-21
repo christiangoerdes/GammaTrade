@@ -93,7 +93,7 @@ async def getMyBalance(name: str, password: str):
 # Endpoint to get the total value of the stocks an account owns
 @api.get("/get-my-stock-value")
 async def getMyStockValue(name: str, password: str):
-    return {"balance": g.get_stock_sum_for(name, password)}
+    return {"value": g.get_stock_sum_for(name, password)}
 
 # Get all stocks
 def get_stocks():
