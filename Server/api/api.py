@@ -206,7 +206,8 @@ def generate_plot(price_history):
     y_lower = y_min - y_range / 2
     y_upper = y_max + y_range / 2
 
-    time = np.arange(-len(price_history)+1,1)
+    # time = np.arange(-len(price_history)+1,1)
+    time = np.arange(len(price_history))
     plt.plot(time, price_history[-100:])
     plt.title('Price History')
     plt.xlabel('Time (in seconds)')
