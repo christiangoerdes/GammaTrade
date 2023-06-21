@@ -122,19 +122,19 @@ def get_stock_lo(stock):
 
 # Get one stock 
 def get_stock(name, password, stock):
+    # Check if stock is owned
     s = g.get_stocks_for(name, password)
-    tmp = g.get_stocks()
-
-    existing_stock_names = [sto.getName() for sto in s]
-    for stockk in tmp:
-        if stockk.getName() not in existing_stock_names:
+    for st in s:
+        if st.getName() == stock:
             stock_obj = {
-                "name": stockk.getName(),
-                "price": stockk.getPrice(),
-                "amount": g.get_account(name, password).get_stocks()[stock.getName()],
-                "plot": base64.b64encode(generate_plot(stockk.getPriceHistory())).decode('utf-8')
+                "name": st.getName(),
+                "price": st.getPrice(),
+                "amount": g.get_account(name, password).get_stocks()[st.getName()],
+                "plot": base64.b64encode(generate_plot(st.getPriceHistory())).decode('utf-8')
             }
             return stock_obj
+
+    s = g.get_stocks()
     for st in s:
         if st.getName() == stock:
             stock_obj = {
