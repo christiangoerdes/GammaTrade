@@ -255,3 +255,30 @@ Account GammaTrade::get_account(std::string name, std::string password) {
         }
     }
 }
+
+/**
+ * @brief Retrieves the total value of all stocks an account owns.
+ * @param name The name of the account holder.
+ * @param password The password for the account.
+ * @return A double representing the total stock value of an account
+ */
+double  GammaTrade::get_stock_sum_for(std::string name, std::string password) {
+    double sum = 0;
+    for(Account& account : accounts) {
+        if(account.get_name() == name && account.get_password() == password) {
+            std::unordered_map<std::string, int> s = account.get_stocks();
+            std::vector<std::string> keys;
+            for (const auto& pair : s) {
+                keys.push_back(pair.first);
+            }
+            std::vector<Stock> result;
+            for (const auto& key : keys) {
+                result.push_back(stocks[key]);
+            }
+            for (const auto& st : result) {
+                sum += st.getPrice() * s[st.getName()];
+            }
+        }
+    }
+    return sum;
+}
