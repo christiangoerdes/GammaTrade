@@ -128,11 +128,23 @@ def get_stock_lo(stock):
 
 # Get one stock 
 def get_stock(name, password, stock):
-    s = get_stocks(name, password)
+    s = g.get_stocks_for(name, password)
+    tmp = g.get_stocks()
+    existing_stock_names = [sto.getName() for sto in s]
+    for stockk in tmp:
+        if stockk.getName() not in existing_stock_names:
+            s.append(stockk)
     for st in s:
-        if st["name"] == stock:
-            return st
+        if st.getName() == stock:
+            stock_obj = {
+                "name": st.getName(),
+                "price": st.getPrice(),
+                "amount": 0,
+                "plot": base64.b64encode(generate_plot(st.getPriceHistory())).decode('utf-8')
+            }
+            return stock_obj
     return None
+
 
 # Get all stocks
 def get_all_stocks():
