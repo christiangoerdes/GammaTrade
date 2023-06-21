@@ -5,3 +5,4 @@ build
 __pycache__
 gammaTrade.cpython-310-x86_64-linux-gnu.so
 api.cpython-310.pyc
+Server/api/__pycache__/api.cpython-310.pyc
