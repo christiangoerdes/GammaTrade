@@ -129,10 +129,10 @@ def get_stock(name, password, stock):
     for stockk in tmp:
         if stockk.getName() not in existing_stock_names:
             stock_obj = {
-                "name": st.getName(),
-                "price": st.getPrice(),
+                "name": stockk.getName(),
+                "price": stockk.getPrice(),
                 "amount": g.get_account(name, password).get_stocks()[stock.getName()],
-                "plot": base64.b64encode(generate_plot(st.getPriceHistory())).decode('utf-8')
+                "plot": base64.b64encode(generate_plot(stockk.getPriceHistory())).decode('utf-8')
             }
             return stock_obj
     for st in s:
