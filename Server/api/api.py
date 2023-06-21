@@ -109,7 +109,7 @@ async def getMyStockValue(name: str, password: str):
 def get_stock_lo(stock):
     s = g.get_stocks()
     for st in s:
-        if st.getName().lower() == stock:
+        if st.getName().lower() == stock.lower():
             stock_obj = {
                 "name": st.getName(),
                 "price": st.getPrice(),
@@ -126,7 +126,7 @@ def get_stock(name, password, stock):
     # Check if stock is owned
     s = g.get_stocks_for(name, password)
     for st in s:
-        if st.getName().lower() == stock:
+        if st.getName().lower() == stock.lower():
             stock_obj = {
                 "name": st.getName(),
                 "price": st.getPrice(),
@@ -136,7 +136,7 @@ def get_stock(name, password, stock):
             return stock_obj
     s = g.get_stocks()
     for st in s:
-        if st.getName().lower() == stock:
+        if st.getName().lower() == stock.lower():
             stock_obj = {
                 "name": st.getName(),
                 "price": st.getPrice(),
