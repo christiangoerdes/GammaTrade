@@ -80,6 +80,11 @@ async def sellStocks(name: str, password: str, stock: str, quantity : int):
 async def getStocks(name: str, password: str):
     return {"stocks": get_stocks(name, password)}
 
+# Endpoint to sell stocks
+@api.get("/get-stocks-logged-out")
+async def getStocksLoggedOut():
+    return {"stocks": get_all_stocks()}
+
 # Endpoint to get balance for user
 @api.get("/get-my-balance")
 async def getMyBalance(name: str, password: str):
