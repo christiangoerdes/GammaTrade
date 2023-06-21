@@ -1,12 +1,11 @@
 try: 
-    import gammaTrade
+    from gammaTrade import GammaTrade
 except ImportError as e:
     print(f"The import caused the following exception: {e}")
     exit(1)
 
 import os
 import io
-from gammaTrade import GammaTrade
 from fastapi import FastAPI
 import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
