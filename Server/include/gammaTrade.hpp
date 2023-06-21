@@ -131,7 +131,6 @@ public:
 private:
     std::vector<Account> accounts;                      /**< The user accounts. */
     std::unordered_map<std::string, Stock> stocks;      /**< The available stocks. */
-    const int _timespan;                                /**< The timespan for stock price updates. */
     std::atomic<bool> stop{false};                      /**< Flag to stop the update thread. */
     std::mutex mtx;                                     /**< Mutex for thread synchronization. */
     std::thread price_thread;                           /**< Thread for stock price updates. */

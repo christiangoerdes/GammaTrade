@@ -18,7 +18,7 @@ public:
      * @param timespan The number of price updates to simulate.
      * @param seed The seed value for the random number generator.
      */
-    Stock(const std::string& name, const double start, const double mean, const double stddev, const int timespan, unsigned seed);
+    Stock(const std::string& name, const double start, const double mean, const double stddev, unsigned seed);
 
     /**
      * @brief Default constructor for Stock.
@@ -28,7 +28,7 @@ public:
     /**
      * @brief Updates the stock price by generating a new price based on the mean and standard deviation.
      */
-    void update();
+    void update(const int timespan);
 
     /**
      * @brief Retrieves the price history of the stock.
@@ -53,7 +53,6 @@ private:
     double _start;                      /**< The initial price of the stock. */
     double _mean;                       /**< The mean value for generating price changes. */
     double _stddev;                     /**< The standard deviation for generating price changes. */
-    int _timespan;                      /**< The number of price updates to simulate. */
     std::list<double> _price_history;   /**< The history of stock prices. */
 
     std::default_random_engine generator;              /**< The random number generator. */
