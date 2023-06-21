@@ -2,16 +2,15 @@ import api from "../../../api/axiosConfig";
 import { Buffer } from "buffer";
 import { useEffect, useState } from "react";
 
-export default function Graph() {
+export default function Graph(props) {
     const [imageBlob, setImageBlob] = useState(null);
     const [imageURL, setImageURL] = useState(null);
 
     const wholeImage = () => {
         api
-        .get("/get-stocks-logged-out")
+        .get(`/get-stock-logged-out?stock=${props.stock}`)
         .then((response) => {
-            setImageBlob(new Blob([Buffer.from(response.data.stocks[0].plot, 'base64')], {type: 'image/png'}))
-            
+            setImageBlob(new Blob([Buffer.from(response.data.stock.plot, 'base64')], {type: 'image/png'}))
         })
         imageBlob && setImageURL(URL.createObjectURL(imageBlob))
     }
