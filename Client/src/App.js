@@ -5,8 +5,7 @@ import Layout from './components/site-layout/Layout';
 import Home from './components/pages/Home';
 import Login from './components/pages/Login';
 import Account from './components/pages/Account';
-import ShopBuy from './components/pages/ShopBuy';
-import ShopSell from './components/pages/ShopSell';
+import Shop from './components/pages/Shop';
 
 import { AuthProvider } from './utils/AuthContext';
 
@@ -28,12 +27,8 @@ function App() {
 						element={ <Account /> }
 					/>
 					<Route
-						path={ pages.get('shop-buy').path }
-						element={ <ShopBuy /> }
-					/>
-					<Route
-						path={ pages.get('shop-sell').path }
-						element={ <ShopSell /> }
+						path={ pages.get('shop').path }
+						element={ <Shop /> }
 					/>
 				</Routes>
 			</Layout>

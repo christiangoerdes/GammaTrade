@@ -46,7 +46,7 @@ export default function Balance() {
     return(
         <>
             <span>Balance: ${balance.toFixed(2)}</span>
-            <span>Stock Value: ${stockValue.toFixed(2)}</span>
+            <span>Total Stock Value: ${stockValue.toFixed(2)}</span>
         </>
     )
 }
