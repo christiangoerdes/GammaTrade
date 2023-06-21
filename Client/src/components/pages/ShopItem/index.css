@@ -28,6 +28,11 @@
 }
 
 .shop-item-info {
+    padding: 1rem;
     display: flex;
     flex-direction: column;
+}
+
+.shop-item-info > div {
+    margin-bottom: 2rem;
 }

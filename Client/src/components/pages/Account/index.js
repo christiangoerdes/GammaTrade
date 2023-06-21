@@ -50,7 +50,7 @@ export default function Account() {
 
     const testItem = () => {
         const info = {
-            name: "Dogecoin"
+            name: "dogecoin"
         }
 
         navigate(pages.get('shop-item').path, {state: info})

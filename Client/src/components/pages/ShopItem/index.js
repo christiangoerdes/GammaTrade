@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../../utils/AuthContext";
 import "./index.css";
 import Graph from "./Graph";
+import ItemNamePrice from "./ItemNamePrice";
+import BuyAndSell from "./BuyAndSell";
 
 export default function ShopItem() {
     const location = useLocation();
@@ -15,14 +17,15 @@ export default function ShopItem() {
             </div>
             <div className="container shop-item">
                 <div className="shop-item-graph">
-                    <Graph />
+                    <Graph stock={location.state.name}/>
                 </div>
                 <div className="shop-item-info">
                     <div>
-                        item info
+                        <ItemNamePrice stock={location.state.name} />
                     </div>
                     <div>
-                        buy and sell
+                        {/* Only if logged in!! */}
+                        <BuyAndSell stock={location.state.name} />
                     </div>
                 </div>
             </div>
