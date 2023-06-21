@@ -120,7 +120,7 @@ def get_my_stocks(name, password):
 
 # Get all stocks merged with the stocks for an account 
 def get_stocks(name, password):
-    all_stocks = get_all_stocks(name, password)
+    all_stocks = get_all_stocks()
     my_stocks = get_my_stocks(name, password)
     merged_stocks = []
     for stock in my_stocks:
