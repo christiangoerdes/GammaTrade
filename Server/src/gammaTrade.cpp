@@ -29,8 +29,6 @@ GammaTrade::GammaTrade(const int timespan) : _timespan(timespan), price_thread(&
         {"BrightFutures Education", Stock("BrightFutures Education", 100.00, pow(1 - 0.02, 1.0/(365*24)) - 1, 0.04 / sqrt(365*24), _timespan, std::random_device{}())}
     };
 
-    // price_thread.detach(); // Detach the thread
-
 }
 
 // Destructor
