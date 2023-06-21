@@ -1,7 +1,7 @@
 # Gamma Trade
 Eine Stock-Trading Plattform 
 ## Projektdetails
-[Implementation Details](https://gitlab.informatik.uni-bonn.de/xx_best_oose_group_xx/projektgamma/-/blob/0cdbedb0b7108f8d738c584a4b776d6a5f09b266/docs/Implementation%20Details/implementation_details.drawio.png)
+[Implementation Details](https://gitlab.informatik.uni-bonn.de/xx_best_oose_group_xx/projektgamma/-/blob/a762f8062085482508c9f81893426cc043b4fc38/docs/Implementation%20Details/implementation_details.drawio.png)
 
 ## Server mit Docker starten
 Um den Server mit Docker zu starten, muss man Docker auf seinem Gerät konfiguriert haben. Anschließend  müssen die folgenden Commands im `/Server` Verzeichnis ausgeführt werden:
