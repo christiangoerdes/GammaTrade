@@ -25,7 +25,7 @@ Stock::Stock(const std::string& name, const double start, const double mean, con
 Stock::Stock() : _start(0.0), _mean(0.0), _stddev(1.0), _timespan(100), distribution(0.0, 1.0) {}
 
 /**
- * @brief Updates the stock's price based on a random walk model.
+ * @brief Updates the stock's price based on a Brownian Motion model.
  */
 void Stock::update() {
     double current_value = _price_history.back();
