@@ -191,10 +191,10 @@ def generate_plot(price_history):
     y_max = np.max(price_history)
 
     # Step 2: Compute the range of the y-axis.
-    y_range = max(y_max - y_min, 100)
+    y_range = 2 * (y_max - y_min)
 
     # Step 3: Set the limits of the y-axis.
-    y_lower = max(y_min - y_range / 2, -100)
+    y_lower = y_min - y_range / 2
     y_upper = y_max + y_range / 2
 
     time = np.arange(-len(price_history)+1,1)
