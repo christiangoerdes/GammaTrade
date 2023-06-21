@@ -1,5 +1,5 @@
 import api from "../../../api/axiosConfig";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import pages from "../../../utils/pages";
 
@@ -16,10 +16,18 @@ export default function ItemCard(props) {
         navigate(pages.get('shop-item').path, {state: info})
     }
 
+    useEffect(() => {
+        api
+        .get(`/get-stock-logged-out?stock=${props.stock}`)
+        .then((response) => {
+            setPrice(response.data.stock.price);
+        })
+    }, [])
+
     return(
         <div className="item-card" onClick={goToItem}>
             <span>{props.stock}</span>
-            <span>$5</span>
+            <span>${price.toFixed(2)}</span>
         </div>
     )
 }

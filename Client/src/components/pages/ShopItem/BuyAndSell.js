@@ -13,7 +13,7 @@ export default function BuyAndSell(props) {
     
     const buyStocks = () => {
         api
-        .get(`/buy-stocks?name=${logInName}&password=${logInPassword}&stock=DogeCoin&quantity=${amount}`)
+        .get(`/buy-stocks?name=${logInName}&password=${logInPassword}&stock=${props.stock}&quantity=${amount}`)
         .then((response) => {
             console.log(response.data);
             if (response.data.success) {
@@ -23,7 +23,7 @@ export default function BuyAndSell(props) {
     }
     const sellStocks = () => {
         api
-        .get(`/sell-stocks?name=${logInName}&password=${logInPassword}&stock=DogeCoin&quantity=${amount}`)
+        .get(`/sell-stocks?name=${logInName}&password=${logInPassword}&stock=${props.stock}&quantity=${amount}`)
         .then((response) => {
             console.log(response.data);
             if (response.data.success) {
