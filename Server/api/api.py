@@ -113,10 +113,16 @@ async def getMyStockValue(name: str, password: str):
 
 # Get one stock 
 def get_stock_lo(stock):
-    s = get_all_stocks()
+    s = g.get_stocks()
     for st in s:
-        if st["name"] == stock:
-            return st
+        if st.getName() == stock:
+            stock_obj = {
+                "name": st.getName(),
+                "price": st.getPrice(),
+                "amount": 0,
+                "plot": base64.b64encode(generate_plot(st.getPriceHistory())).decode('utf-8')
+            }
+            return stock_obj
     return None
 
 
