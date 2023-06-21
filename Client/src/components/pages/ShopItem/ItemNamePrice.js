@@ -15,7 +15,7 @@ export default function ItemNamePrice(props) {
     }
 
     useEffect(() => {
-        const interval = setInterval(getItemData, 1000);
+        const interval = setInterval(getItemData, 1500);
 
         return () => {
             clearInterval(interval);
