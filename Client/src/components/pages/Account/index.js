@@ -5,6 +5,7 @@ import "./index.css";
 import api from "../../../api/axiosConfig";
 import pages from "../../../utils/pages";
 import Balance from "./Balance";
+import MyStocks from "./MyStocks";
 
 export default function Account() {
     const { isLoggedIn, login, logout, logInName, setLogInName, logInPassword, setLogInPassword } = useContext(AuthContext);
@@ -48,14 +49,6 @@ export default function Account() {
         })
     }
 
-    const testItem = () => {
-        const info = {
-            name: "dogecoin"
-        }
-
-        navigate(pages.get('shop-item').path, {state: info})
-    }
-
     return(
         <>
             <div className="account-headline">
@@ -90,14 +83,14 @@ export default function Account() {
                 </div>
                 {errorMessage && <span className="error-message">{errorMessage}</span>}
 
+                <MyStocks />
+
                 <button
                     className="logout-button"
                     onClick={handleLogout}
                 >
                     Logout
                 </button>
-
-                <button onClick={testItem}>Test Item</button>
             </div>
         </>
     )

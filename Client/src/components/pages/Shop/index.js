@@ -21,9 +21,9 @@ export default function Shop() {
                 <h2>Shop</h2>
             </div>
             {data && <div className="container shop">
-            {data.map((item, index) =>
-                <ItemCard stock={item.name} />    
-            )}
+                {data.map((item, index) =>
+                    <ItemCard stock={item.name} />    
+                )}
             </div>}
             {!data && <div className="container shop">Loading Items...</div>}
         </>
