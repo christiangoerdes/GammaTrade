@@ -54,6 +54,7 @@ export default function Login() {
                     setLogInPassword(password);
                     setErrorMessage(null);
                     login();
+                    navigate(pages.get('account').path);
                 }
                 else {
                     setErrorMessage("The User(name) already exists!");

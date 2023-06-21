@@ -11,12 +11,50 @@
 }
 
 .logout {
-    margin-top: 3rem;
+    align-items: center;
+    margin-top: 2rem;
     display: flex;
     flex-direction: column;
-    align-items: center;
 }
 
-.logout button {
+.logout h2 {
+    margin-bottom: 1rem;
+    align-self: center;
+}
+
+.logout-balance {
+    margin-top: 0.5rem;
+}
+
+.logout-balance-buttons {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.logout-balance-buttons input {
+    border-radius: 1.1rem;
+    height: 2.5rem;  
+    margin-bottom: 0rem;
+    width: 40%;
+}
+
+.logout-balance-buttons button {
+    /* width: 10rem; */
+    height: 2.5rem;
+}
+
+.logout-button {
+    height: 2.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: 0.18rem solid var(--primary-color);
+    background-color: var(--special-color-3);
+    color: var(--primary-color);
+    border-radius: 1.1rem;
+    margin-top: 2rem;
     width: 30rem;
+    align-self: center;
 }
