@@ -8,7 +8,7 @@ export default function Graph(props) {
 
     const wholeImage = () => {
         api
-        .get(`/get-stock-logged-out?stock=${props.stock}`)
+        .get(`/get-stock-logged-out?stock=${props.stock.toLowerCase()}`)
         .then((response) => {
             setImageBlob(new Blob([Buffer.from(response.data.stock.plot, 'base64')], {type: 'image/png'}))
         })

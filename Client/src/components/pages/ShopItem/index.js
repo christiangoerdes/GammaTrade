@@ -8,6 +8,8 @@ import ItemNamePrice from "./ItemNamePrice";
 import BuyAndSell from "./BuyAndSell";
 
 export default function ShopItem() {
+    const { isLoggedIn, login, logout, logInName, setLogInName, logInPassword, setLogInPassword } = useContext(AuthContext);
+    
     const location = useLocation();
     
     return(
@@ -23,10 +25,13 @@ export default function ShopItem() {
                     <div>
                         <ItemNamePrice stock={location.state.name} />
                     </div>
-                    <div>
-                        {/* Only if logged in!! */}
-                        <BuyAndSell stock={location.state.name} />
-                    </div>
+                    {isLoggedIn ? 
+                        <div>
+                            <BuyAndSell stock={location.state.name} />
+                        </div>
+                        : <></>
+                    }
+                    
                 </div>
             </div>
         </>

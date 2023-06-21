@@ -7,7 +7,7 @@ export default function ItemNamePrice(props) {
     
     const getItemData = () => {
         api
-        .get(`/get-stock-logged-out?stock=${props.stock}`)
+        .get(`/get-stock-logged-out?stock=${props.stock.toLowerCase()}`)
         .then((response) => {
             setName(response.data.stock.name);
             setPrice(response.data.stock.price);

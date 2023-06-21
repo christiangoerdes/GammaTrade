@@ -1,0 +1,30 @@
+.shop-headline {
+    background-color: var(--secondary-color);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shop-headline h2 {
+    color: var(--primary-color);
+    text-align: center;
+    padding: 1.875rem 0 1.875rem 0;
+}
+
+.shop {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.item-card {
+    margin: 2rem 0rem;
+    padding: 1rem 0.5rem;
+    background-color: var(--special-color-2);
+    color: var(--secondary-color);
+    border: 1px solid var(--secondary-color);
+    border-radius: 1.1rem;
+    display: flex;
+    justify-content: space-between;
+    width: 20rem;
+    cursor: pointer;
+}

@@ -34,7 +34,7 @@ export default function BuyAndSell(props) {
 
     useEffect(() => {
         api
-        .get(`/get-stock?name=${logInName}&password=${logInPassword}&stock=${props.stock}`)
+        .get(`/get-stock?name=${logInName}&password=${logInPassword}&stock=${props.stock.toLowerCase()}`)
         .then((response) => {
             setAmountOwnedStocks(response.data.stock.amount);
         })

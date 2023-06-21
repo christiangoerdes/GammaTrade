@@ -9,7 +9,6 @@ export default function Home() {
         <>
             <div className="home-headline">
                 <h2>Home</h2>
-                <button onClick={() => console.log(isLoggedIn)} className='primary-button'>Print isLoggedIn</button>
             </div>
         </>
     )
