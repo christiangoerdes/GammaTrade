@@ -95,7 +95,7 @@ async def getStock(name: str, password: str, stock: str):
 
 # Endpoint to get one stock without login
 @api.get("/get-stock-logged-out")
-async def getStock(stock: str):
+async def getStockLoggedOut(stock: str):
     return {"stock": get_stock_lo(stock)}
 
 
