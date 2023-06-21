@@ -120,6 +120,14 @@ public:
      */
     Account get_account(std::string name, std::string password);
 
+    /**
+     * @brief Retrieves the total value of all stocks an account owns.
+     * @param name The name of the account holder.
+     * @param password The password for the account.
+     * @return A double representing the total stock value of an account
+     */
+    double get_stock_sum_for(std::string name, std::string password);
+
 private:
     std::vector<Account> accounts;                      /**< The user accounts. */
     std::unordered_map<std::string, Stock> stocks;      /**< The available stocks. */
