@@ -134,7 +134,6 @@ def get_stock(name, password, stock):
                 "plot": base64.b64encode(generate_plot(st.getPriceHistory())).decode('utf-8')
             }
             return stock_obj
-
     s = g.get_stocks()
     for st in s:
         if st.getName().lower() == stock:
