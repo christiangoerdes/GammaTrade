@@ -129,8 +129,8 @@ def get_stocks(name, password):
             "price": stock["price"],
             "amount": stock["amount"],
             "plot": stock["plot"]
-    }
-    merged_stocks.append(merged_stock)
+        }
+        merged_stocks.append(merged_stock)
 
     # Add stocks from all_stocks that aren't in my_stocks
     for stock in all_stocks:
