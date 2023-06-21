@@ -4,16 +4,11 @@ except ImportError as e:
     print(f"The import caused the following exception: {e}")
     exit(1)
 
-import os
 import io
 from fastapi import FastAPI
-import uvicorn
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import FileResponse
 import numpy as np
 import matplotlib.pyplot as plt
-from io import BytesIO
-import tempfile
 import base64
 
 # Initialize marketplace
