@@ -3,6 +3,7 @@ import { useLocation } from "react-router-dom";
 import { useContext } from "react";
 import { AuthContext } from "../../../utils/AuthContext";
 import "./index.css";
+import Graph from "./Graph";
 
 export default function ShopItem() {
     const location = useLocation();
@@ -14,7 +15,7 @@ export default function ShopItem() {
             </div>
             <div className="container shop-item">
                 <div className="shop-item-graph">
-                    graph here
+                    <Graph />
                 </div>
                 <div className="shop-item-info">
                     <span>{location.state.name}</span>
