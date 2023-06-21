@@ -225,6 +225,7 @@ std::vector<Stock> GammaTrade::get_stocks_for(std::string name, std::string pass
             return result;
         }
     }
+    return NULL;
 }
 
 /**
@@ -239,6 +240,7 @@ double GammaTrade::get_balance_for(std::string name, std::string password) {
             return account.get_balance();
         }
     }
+    return NULL;
 }
 
 /**
@@ -253,4 +255,5 @@ Account GammaTrade::get_account(std::string name, std::string password) {
             return account;
         }
     }
+    return NULL;
 }
