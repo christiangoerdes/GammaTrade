@@ -262,7 +262,7 @@ Account GammaTrade::get_account(std::string name, std::string password) {
  * @param password The password for the account.
  * @return A double representing the total stock value of an account
  */
-double  GammaTrade::get_stock_sum_for(std::string name, std::string password) {
+double GammaTrade::get_stock_sum_for(std::string name, std::string password) {
     double sum = 0;
     for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
