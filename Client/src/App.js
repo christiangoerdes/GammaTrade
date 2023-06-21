@@ -6,6 +6,7 @@ import Home from './components/pages/Home';
 import Login from './components/pages/Login';
 import Account from './components/pages/Account';
 import Shop from './components/pages/Shop';
+import ShopItem from './components/pages/ShopItem';
 
 import { AuthProvider } from './utils/AuthContext';
 
@@ -29,6 +30,10 @@ function App() {
 					<Route
 						path={ pages.get('shop').path }
 						element={ <Shop /> }
+					/>
+					<Route 
+						path={ pages.get('shop-item').path }
+						element={ <ShopItem /> }
 					/>
 				</Routes>
 			</Layout>

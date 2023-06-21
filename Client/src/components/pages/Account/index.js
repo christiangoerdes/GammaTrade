@@ -48,6 +48,14 @@ export default function Account() {
         })
     }
 
+    const testItem = () => {
+        const info = {
+            name: "Dogecoin"
+        }
+
+        navigate(pages.get('shop-item').path, {state: info})
+    }
+
     return(
         <>
             <div className="account-headline">
@@ -88,6 +96,8 @@ export default function Account() {
                 >
                     Logout
                 </button>
+
+                <button onClick={testItem}>Test Item</button>
             </div>
         </>
     )

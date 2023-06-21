@@ -75,34 +75,68 @@ async def sellStocks(name: str, password: str, stock: str, quantity : int):
     return {"success": g.sell_stocks(name, password, stock, quantity)}
 
 
-# Endpoint to sell stocks
+# Endpoint to get stocks
 @api.get("/get-stocks")
-async def getStocks():
-    return {"stocks": get_stocks()}
+async def getStocks(name: str, password: str):
+    return {"stocks": get_stocks(name, password)}
 
-# Endpoint to get stocks for user
-@api.get("/get-my-stocks")
-async def getMyStocks(name: str, password: str):
-    return {"stocks": get_my_stocks(name, password)}
+
+# Endpoint to get stocks without login
+@api.get("/get-stocks-logged-out")
+async def getStocksLoggedOut():
+    return {"stocks": get_all_stocks()}
+
+
+# Endpoint to get one stock 
+@api.get("/get-stock")
+async def getStock(name: str, password: str, stock: str):
+    return {"stock": get_stock(name, password, stock)}
+
+
+# Endpoint to get one stock without login
+@api.get("/get-stock-logged-out")
+async def getStock(stock: str):
+    return {"stock": get_stock_lo(stock)}
+
 
 # Endpoint to get balance for user
 @api.get("/get-my-balance")
 async def getMyBalance(name: str, password: str):
     return {"balance": g.get_balance_for(name, password)}
 
+
 # Endpoint to get the total value of the stocks an account owns
 @api.get("/get-my-stock-value")
 async def getMyStockValue(name: str, password: str):
     return {"value": g.get_stock_sum_for(name, password)}
 
+
+# Get one stock 
+def get_stock_lo(stock):
+    s = get_all_stocks()
+    for stock in s:
+        if stock["name"] == stock:
+            return stock
+    return None
+
+
+# Get one stock 
+def get_stock(name, password, stock):
+    s = get_stocks(name, password)
+    for stock in s:
+        if stock["name"] == stock:
+            return stock
+    return None
+
 # Get all stocks
-def get_stocks():
+def get_all_stocks():
     s = g.get_stocks()
     stocks = []
     for stock in s:
         stock_obj = {
             "name": stock.getName(),
             "price": stock.getPrice(),
+            "amount": 0,
             "plot": base64.b64encode(generate_plot(stock.getPriceHistory())).decode('utf-8')
         }
         stocks.append(stock_obj)
@@ -121,6 +155,33 @@ def get_my_stocks(name, password):
         }
         stocks.append(stock_obj)
     return stocks
+
+# Get all stocks merged with the stocks for an account 
+def get_stocks(name, password):
+    all_stocks = get_all_stocks()
+    my_stocks = get_my_stocks(name, password)
+    merged_stocks = []
+    for stock in my_stocks:
+        merged_stock = {
+            "name": stock["name"],
+            "price": stock["price"],
+            "amount": stock["amount"],
+            "plot": stock["plot"]
+        }
+        merged_stocks.append(merged_stock)
+
+    # Add stocks from all_stocks that aren't in my_stocks
+    for stock in all_stocks:
+        stock_names = [s["name"] for s in my_stocks]
+        if stock["name"] not in stock_names:
+            merged_stock = {
+                "name": stock["name"],
+                "price": stock["price"],
+                "amount": 0,
+                "plot": stock["plot"]
+            }
+            merged_stocks.append(merged_stock)
+    return merged_stocks
 
 
 # Get the current price history of all stocks
@@ -146,9 +207,9 @@ def generate_plot(price_history):
     y_upper = y_max + y_range / 2
 
     time = np.arange(len(price_history))
-    plt.plot(time, price_history)
+    plt.plot(time, price_history[-100:])
     plt.title('Price History')
-    plt.xlabel('Time')
+    plt.xlabel('Time (in seconds)')
     plt.ylabel('Price')
     plt.ylim(y_lower, y_upper)  # Set the limits here
     plt.grid(True)

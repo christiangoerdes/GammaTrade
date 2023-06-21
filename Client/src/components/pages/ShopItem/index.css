@@ -1,0 +1,22 @@
+.shop-item-headline {
+    background-color: var(--secondary-color);
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.shop-item-headline h2 {
+    color: var(--primary-color);
+    text-align: center;
+    padding: 1.875rem 0 1.875rem 0;
+}
+
+.shop-item {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.shop-item-info {
+    display: flex;
+    flex-direction: column;
+}
