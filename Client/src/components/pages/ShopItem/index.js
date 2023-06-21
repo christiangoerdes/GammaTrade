@@ -18,8 +18,12 @@ export default function ShopItem() {
                     <Graph />
                 </div>
                 <div className="shop-item-info">
-                    <span>{location.state.name}</span>
-                    <span>some </span>
+                    <div>
+                        item info
+                    </div>
+                    <div>
+                        buy and sell
+                    </div>
                 </div>
             </div>
         </>
