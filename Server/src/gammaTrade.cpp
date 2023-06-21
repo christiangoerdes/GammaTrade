@@ -210,10 +210,19 @@ std::vector<Stock> GammaTrade::get_stocks() {
  * @param password The password for the account.
  * @return An unordered map where the keys are stock names and the values are the quantities held by the account.
  */
-std::unordered_map<std::string, int> GammaTrade::get_stocks_for(std::string name, std::string password) {
+std::vector<Stock> GammaTrade::get_stocks_for(std::string name, std::string password) {
     for(Account& account : accounts) {
         if(account.get_name() == name && account.get_password() == password) {
-            return account.get_stocks();
+            std::unordered_map<std::string, int> s = account.get_stocks();
+            std::vector<std::string> keys;
+            for (const auto& pair : s) {
+                keys.push_back(pair.first);
+            }
+            std::vector<Stock> result;
+             for (const auto& key : keys) {
+                result.push_back(stocks[key]);
+            }
+            return result;
         }
     }
 }

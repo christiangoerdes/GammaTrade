@@ -102,7 +102,7 @@ public:
      * @param password The password for the account.
      * @return A map of stock names to quantities.
      */
-    std::unordered_map<std::string, int> get_stocks_for(std::string name, std::string password);
+    std::vector<Stock> get_stocks_for(std::string name, std::string password);
 
     /**
      * @brief Retrieves the account balance for the specified account.
