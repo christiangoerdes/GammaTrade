@@ -117,7 +117,6 @@ def get_my_stocks(name, password):
         stock_obj = {
             "name": stock.getName(),
             "price": stock.getPrice(),
-            "amount": acc.get_stocks()[stock.getName()],
             "plot": base64.b64encode(generate_plot(stock.getPriceHistory())).decode('utf-8')
         }
         stocks.append(stock_obj)
