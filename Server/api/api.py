@@ -80,20 +80,53 @@ async def sellStocks(name: str, password: str, stock: str, quantity : int):
 async def getStocks(name: str, password: str):
     return {"stocks": get_stocks(name, password)}
 
+
 # Endpoint to get stocks without login
 @api.get("/get-stocks-logged-out")
 async def getStocksLoggedOut():
     return {"stocks": get_all_stocks()}
+
+
+# Endpoint to get one stock 
+@api.get("/get-stock")
+async def getStock(name: str, password: str, stock: str):
+    return {"stock": get_stock(name, password, stock)}
+
+
+# Endpoint to get one stock without login
+@api.get("/get-stock-logged-out")
+async def getStock(stock: str):
+    return {"stock": get_stock_lo(stock)}
+
 
 # Endpoint to get balance for user
 @api.get("/get-my-balance")
 async def getMyBalance(name: str, password: str):
     return {"balance": g.get_balance_for(name, password)}
 
+
 # Endpoint to get the total value of the stocks an account owns
 @api.get("/get-my-stock-value")
 async def getMyStockValue(name: str, password: str):
     return {"value": g.get_stock_sum_for(name, password)}
+
+
+# Get one stock 
+def get_stock_lo(stock):
+    s = get_all_stocks()
+    for stock in s:
+        if stock["name"] == stock:
+            return stock
+    return None
+
+
+# Get one stock 
+def get_stock(name, password, stock):
+    s = get_stocks(name, password)
+    for stock in s:
+        if stock["name"] == stock:
+            return stock
+    return None
 
 # Get all stocks
 def get_all_stocks():
