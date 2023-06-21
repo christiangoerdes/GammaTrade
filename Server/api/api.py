@@ -184,16 +184,7 @@ def get_stocks(name, password):
     return merged_stocks
 
 
-# Get the current price history of all stocks
-def get_history():
-    history = []
-    stocks = g.get_stocks()
-    for stock in stocks: 
-        history.append(stock.getPriceHistory())
-    return history
-
 # Generate a plot of the price history for each stock
-
 def generate_plot(price_history):
     time = np.arange(len(price_history))
     plt.plot(time, price_history[-100:])
