@@ -13,7 +13,18 @@
 .shop-item {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
+    /* flex-wrap: wrap; */
+    margin-top: 3rem;
+    justify-content: center;
+}
+
+.shop-item-graph {
+    border-right: 2px solid var(--secondary-color);
+    padding: 1rem;
+}
+
+.shop-item-graph img {
+    border-radius: 1.1rem;
 }
 
 .shop-item-info {

@@ -203,7 +203,7 @@ def generate_plot(price_history):
     plt.plot(time, price_history,  color='#062C30')
     plt.title('Price History')
     plt.xlabel('Time (in seconds)')
-    plt.ylabel('Price')
+    plt.ylabel('Price in $')
     plt.ylim(y_lower, y_upper)  # Set the limits here
     plt.xlim(-len(time),5)
     plt.grid(True)

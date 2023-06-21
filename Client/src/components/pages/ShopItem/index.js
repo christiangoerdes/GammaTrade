@@ -19,7 +19,7 @@ export default function ShopItem() {
                 </div>
                 <div className="shop-item-info">
                     <span>{location.state.name}</span>
-                    <span>some price</span>
+                    <span>some </span>
                 </div>
             </div>
         </>
