@@ -199,11 +199,13 @@ def generate_plot(price_history):
 
     time = np.arange(-len(price_history)+1,1)
     # time = np.arange(len(price_history))
-    plt.plot(time, price_history)
+    plt.figure(facecolor= '#F5F5F5')
+    plt.plot(time, price_history,  color='#062C30')
     plt.title('Price History')
     plt.xlabel('Time (in seconds)')
     plt.ylabel('Price')
     plt.ylim(y_lower, y_upper)  # Set the limits here
+    plt.xlim(-len(time),5)
     plt.grid(True)
     # Save the plot image to a byte stream
     image_stream = io.BytesIO()
