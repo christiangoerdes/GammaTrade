@@ -53,13 +53,13 @@ async def login(name: str, password: str):
 
 # Deposit endpoint 
 @api.get("/deposit")
-async def deposit(name: str, password: str, amount: float):
+async def deposit(name: str, password: str, amount: int):
     return {"success": g.deposit(name, password, amount)}
 
 
 # Withdraw endpoint 
 @api.get("/withdraw")
-async def withdraw(name: str, password: str, amount: float):
+async def withdraw(name: str, password: str, amount: int):
     return {"success": g.withdraw(name, password, amount)}
 
 
