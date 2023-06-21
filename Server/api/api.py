@@ -77,13 +77,8 @@ async def sellStocks(name: str, password: str, stock: str, quantity : int):
 
 # Endpoint to sell stocks
 @api.get("/get-stocks")
-async def getStocks():
-    return {"stocks": get_stocks()}
-
-# Endpoint to get stocks for user
-@api.get("/get-my-stocks")
-async def getMyStocks(name: str, password: str):
-    return {"stocks": get_my_stocks(name, password)}
+async def getStocks(name: str, password: str):
+    return {"stocks": get_stocks(name, password)}
 
 # Endpoint to get balance for user
 @api.get("/get-my-balance")
@@ -96,13 +91,14 @@ async def getMyStockValue(name: str, password: str):
     return {"value": g.get_stock_sum_for(name, password)}
 
 # Get all stocks
-def get_stocks():
+def get_all_stocks():
     s = g.get_stocks()
     stocks = []
     for stock in s:
         stock_obj = {
             "name": stock.getName(),
             "price": stock.getPrice(),
+            "amount": 0,
             "plot": base64.b64encode(generate_plot(stock.getPriceHistory())).decode('utf-8')
         }
         stocks.append(stock_obj)
@@ -121,6 +117,33 @@ def get_my_stocks(name, password):
         }
         stocks.append(stock_obj)
     return stocks
+
+# Get all stocks merged with the stocks for an account 
+def get_stocks(name, password):
+    all_stocks = get_all_stocks(name, password)
+    my_stocks = get_my_stocks(name, password)
+    merged_stocks = []
+    for stock in my_stocks:
+        merged_stock = {
+            "name": stock["name"],
+            "price": stock["price"],
+            "amount": stock["amount"],
+            "plot": stock["plot"]
+    }
+    merged_stocks.append(merged_stock)
+
+    # Add stocks from all_stocks that aren't in my_stocks
+    for stock in all_stocks:
+        stock_names = [s["name"] for s in my_stocks]
+        if stock["name"] not in stock_names:
+            merged_stock = {
+                "name": stock["name"],
+                "price": stock["price"],
+                "amount": 0,
+                "plot": stock["plot"]
+            }
+            merged_stocks.append(merged_stock)
+    return merged_stocks
 
 
 # Get the current price history of all stocks
