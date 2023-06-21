@@ -163,9 +163,9 @@ def get_history():
 
 def generate_plot(price_history):
     time = np.arange(len(price_history))
-    plt.plot(time, price_history)
+    plt.plot(time, price_history[-100:])
     plt.title('Price History')
-    plt.xlabel('Time')
+    plt.xlabel('Time (in seconds)')
     plt.ylabel('Price')
     plt.grid(True)
     # Save the plot image to a byte stream
