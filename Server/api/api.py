@@ -200,7 +200,7 @@ def generate_plot(price_history):
     time = np.arange(-len(price_history)+1,1)
     # time = np.arange(len(price_history))
     plt.figure(facecolor= '#F5F5F5')
-    plt.plot(time, price_history)
+    plt.plot(time, price_history,  color='#062C30')
     plt.title('Price History')
     plt.xlabel('Time (in seconds)')
     plt.ylabel('Price')
