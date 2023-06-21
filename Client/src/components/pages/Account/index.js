@@ -4,23 +4,15 @@ import { AuthContext } from "../../../utils/AuthContext";
 import "./index.css";
 import api from "../../../api/axiosConfig";
 import pages from "../../../utils/pages";
+import Balance from "./Balance";
 
 export default function Account() {
     const { isLoggedIn, login, logout, logInName, setLogInName, logInPassword, setLogInPassword } = useContext(AuthContext);
     
     const navigate = useNavigate();
 
-    const [balance, setBalance] = useState(null);
     const [amount, setAmount] = useState(0);
     const [errorMessage, setErrorMessage] = useState(null);
-
-    const getBalance = () => {
-        api
-        .get(`/get-my-balance?name=${logInName}&password=${logInPassword}`)
-        .then((response) => {
-            setBalance(response.data.balance);
-        })
-    }
 
     const handleLogout = () => {
         setLogInName(null);
@@ -64,9 +56,7 @@ export default function Account() {
             <div className="container logout">
                 <h2>{logInName}</h2>
                 
-                <span className="logout-balance">Current Balance: ${balance ? balance : ""}</span>
-
-                <button onClick={getBalance}>Update Balance</button>
+                <Balance />
 
                 <div className="logout-balance-buttons">
                     <input
@@ -92,7 +82,7 @@ export default function Account() {
                 </div>
                 {errorMessage && <span className="error-message">{errorMessage}</span>}
 
-                <button 
+                <button
                     className="logout-button"
                     onClick={handleLogout}
                 >
