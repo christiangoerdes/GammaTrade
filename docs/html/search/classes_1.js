@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['gammatrade_53',['GammaTrade',['../classGammaTrade.html',1,'']]]
+  ['gammatrade_55',['GammaTrade',['../classGammaTrade.html',1,'']]]
 ];
