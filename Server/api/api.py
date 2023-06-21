@@ -134,11 +134,23 @@ def get_history():
 # Generate a plot of the price history for each stock
 
 def generate_plot(price_history):
+    
+    y_min = np.min(price_history)
+    y_max = np.max(price_history)
+
+    # Step 2: Compute the range of the y-axis.
+    y_range = 2 * (y_max - y_min)
+
+    # Step 3: Set the limits of the y-axis.
+    y_lower = y_min - y_range / 2
+    y_upper = y_max + y_range / 2
+
     time = np.arange(len(price_history))
     plt.plot(time, price_history)
     plt.title('Price History')
     plt.xlabel('Time')
     plt.ylabel('Price')
+    plt.ylim(y_lower, y_upper)  # Set the limits here
     plt.grid(True)
     # Save the plot image to a byte stream
     image_stream = io.BytesIO()
