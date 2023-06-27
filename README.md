@@ -1,4 +1,4 @@
-# Gamma Trade
+# Gamma Trade - Uni Projekt 3
 Eine Stock-Trading Plattform 
 ## Projektdetails
 [Implementation Details](https://gitlab.informatik.uni-bonn.de/xx_best_oose_group_xx/projektgamma/-/blob/a762f8062085482508c9f81893426cc043b4fc38/docs/Implementation%20Details/implementation_details.drawio.png)
