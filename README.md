@@ -1,7 +1,7 @@
 # Gamma Trade - Uni Projekt 3
 Eine Stock-Trading Plattform 
 ## Projektdetails
-[Implementation Details](docs/Implementation Details/implementation_details.drawio.png)
+[Implementation Details](https://github.com/christiangoerdes/GammaTrade/blob/a6674459dc4a86af7a074fc54c104191ab5bb373/docs/Implementation%20Details/implementation_details.drawio.png)
 
 ## Server mit Docker starten
 Um den Server mit Docker zu starten, muss man Docker auf seinem Gerät konfiguriert haben. Anschließend  müssen die folgenden Commands im `/Server` Verzeichnis ausgeführt werden:
