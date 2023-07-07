@@ -56,4 +56,4 @@ Das Projekt wurde so realisiert, dass Client und Server unabhängig von einander
 - API - Chrisi     
 - Spiellogik - Sergej
 
-[Gantt Chart](https://gitlab.informatik.uni-bonn.de/xx_best_oose_group_xx/projektgamma/-/blob/2ffa367af6ab2fdee50094991a03205352c6efcb/docs/Gantt%20Chart/Gantt%20Chart.png)
+[Gantt Chart](https://github.com/christiangoerdes/GammaTrade/blob/7bb6c9f15e340af347f4c7cbfe48cff70999b4ab/docs/Gantt%20Chart/Gantt%20Chart.png)
