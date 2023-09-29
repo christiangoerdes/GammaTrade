@@ -1,5 +1,10 @@
 # GammaTrade 
 
+## General Information 
+This project is a collaborative effort developed as part of the Object-Oriented Software Development module. It comprises a client implemented in React and a server implemented using Python, C++, and Pybind. The communication between the client and server operates using the REST architecture. The project was completed within a tight timeframe of just 3 days.
+
+Due to some issues such as an unsatisfactory API and the absence of a database, the project was later reimplemented using Spring Boot to address these shortcomings and improve overall functionality.
+For the updated and improved version of this project, please refer to the [ElectroTrade](https://github.com/christiangoerdes/ElectroTradeBackend) repository. 
 
 ## Server
 ### Starting the Server with Docker
