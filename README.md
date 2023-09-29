@@ -1,59 +1,49 @@
-# Gamma Trade - Uni Projekt 3
-Eine Stock-Trading Plattform 
-## Projektdetails
-[Implementation Details](https://github.com/christiangoerdes/GammaTrade/blob/a6674459dc4a86af7a074fc54c104191ab5bb373/docs/Implementation%20Details/implementation_details.drawio.png)
-
-## Server mit Docker starten
-Um den Server mit Docker zu starten, muss man Docker auf seinem Gerät konfiguriert haben. Anschließend  müssen die folgenden Commands im `/Server` Verzeichnis ausgeführt werden:
+# GammaTrade 
 
 
-Container bauen:
+## Server
+### Starting the Server with Docker
+To start the server using Docker, you need to have Docker configured on your device. Afterward, execute the following commands in the `/Server` directory:
 
-    sudo docker build -t gammatrade .
+Build the container:
+```
+sudo docker build -t gammatrade .
+```
+Start the container:
+```
+sudo docker run --network host gammatrade
+```
 
-Container starten:
-
-    sudo docker run --network host gammatrade
-
-
-## Server ohne Docker starten
-### Build erstellen:
-Um einen Build zu erstellen, muss der folgende Command im `/Server` Verzeichnis des Projekts eingegeben werden:
+### Starting the Server without Docker
+#### Creating a Build:
+To create a build, enter the following command in the `/Server` directory of the project:
     
     cmake -S . -B build && cmake --build build && cmake --install build
 
-### API starten:
-Um die API zu starten, muss einer der beiden folgenden Commands im `/Server/api` Verzeichnis ausgeführt werden:
-
+#### Starting the API:
+To start the API, execute one of the following commands in the `/Server/api` directory:
+```
     uvicorn api:api --port 8000 --reload
- ###
-
+```
+```
     python3 -m uvicorn api:api --port 8000  --reload
-
+```
 ---
-## Client starten
+## Client
 
-Um den Client zu nutzen, muss zuerst Node installiert werden.
+To use the client, you first need to install Node.js.
 
-Anschließend muss im `/Client` Verzeichnis in der axiosConfig die baseURL auf den Server-host gestellt werden, den man nutzen möchte.
+Next, in the axiosConfig file located in the `/Client` directory, set the baseURL to the server host you want to use.
 
-Zum Installieren der Abhängigkeiten muss folgender Befehl im `/Client` Verzeichnis ausgeführt werden:
+To install dependencies, run the following command in the `/Client` directory:
+```
+npm install
+```
+To start the client, run the following command in the `/Client` directory:
+```
+npm start
+```
 
-    npm install
-
-Zum Starten des Clients muss folgender Befehl im `/Client` Verzeichnis ausgeführt werden:
-
-    npm start
-
-## Mitglieder
-- Ibrahim Fakhir
-- Christian Goerdes
-- Sergej Zuev
-
-## Aufteilung und Umsetzung
-Das Projekt wurde so realisiert, dass Client und Server unabhängig von einander sind. Zum Entwickeln wurde dabei der Server in die Spiellogik und API aufgeteilt. Die drei Bestandteile wurden im wesentlichen wie folgt aufgeteilt:
-- Client - Ibo
-- API - Chrisi     
-- Spiellogik - Sergej
-
+## Projektdetails
+[Implementation Details](https://github.com/christiangoerdes/GammaTrade/blob/a6674459dc4a86af7a074fc54c104191ab5bb373/docs/Implementation%20Details/implementation_details.drawio.png)
 [Gantt Chart](https://github.com/christiangoerdes/GammaTrade/blob/7bb6c9f15e340af347f4c7cbfe48cff70999b4ab/docs/Gantt%20Chart/Gantt%20Chart.png)
