@@ -51,4 +51,5 @@ npm start
 
 ## Projektdetails
 [Implementation Details](https://github.com/christiangoerdes/GammaTrade/blob/a6674459dc4a86af7a074fc54c104191ab5bb373/docs/Implementation%20Details/implementation_details.drawio.png)
+
 [Gantt Chart](https://github.com/christiangoerdes/GammaTrade/blob/7bb6c9f15e340af347f4c7cbfe48cff70999b4ab/docs/Gantt%20Chart/Gantt%20Chart.png)
